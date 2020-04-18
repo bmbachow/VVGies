@@ -1,0 +1,31 @@
+/* MOBILE FIRST! */
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* REPONSIVE DESIGN ////////////////////////*/
+/* 480 /////////////////////////////////////*/
+@media screen and (min-width: 480px) {}
+/* 768 /////////////////////////////////////*/
+@media screen and (min-width: 768px) {}
+/* 1024 /////////////////////////////////////*/
+@media screen and (min-width: 1024px) {}
+/* 1280 /////////////////////////////////////*/
+@media screen and (min-width: 1280px) {}
