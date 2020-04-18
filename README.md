@@ -1,3 +1,3 @@
 # capstone-1
 
-**API Mashup** Brian & Sacha
+**Brian & Sacha** API Mashup 
