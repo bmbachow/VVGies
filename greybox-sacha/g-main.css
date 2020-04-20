@@ -82,7 +82,7 @@ ul {
 
 .restaurant-item p {
   font-weight: bold;
-  font-size: 2em;
+  font-size: 2rem;
   margin: 0;
   position: absolute;
   top: 50%;
@@ -97,8 +97,31 @@ ul {
 .detailed h2 {
   margin-top: 0;
 }
+.food-types {
+  list-style: none;
+  padding: 0;
 
+}
+.food-types li {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 2px solid rgb(0, 0, 0, 0.6); 
+  color:  rgb(0, 0, 0, 0.6);
+  font-weight: bold;
+  font-size: 0.7rem
+}
 
+.food-types .cuisine {
+  background-color: black;
+  color: white;
+}
+
+.food-types .price {
+  border: 2px solid rgb(0, 0, 0, 0);
+  /* border: none; */
+  background-color: rgb(0, 0, 0, 0.6);
+  color: white;
+}
 
 
 
