@@ -13,7 +13,69 @@
 <body>
   
   <main>
-    Yo mama.
+    
+    <!-- VIEW 1: ROOT VIEW (init search) -->
+    <!-- <header><h2>Root View</h2></header> -->
+    <!-- <section class="root"></section> -->
+    
+    <!-- VIEW 2: :RESULTS VIEW -->
+    <header><h2>:Results View</h2></header>
+    
+    <section class="results">
+      <header class="brand">Branding?</header>
+      <nav class="nav-search">
+        <form>
+          <label for="searchbar"></label>
+          <input type="text" id="searchbar" name="searchbar" placeholder="Los Angeles" required>
+          <button type="submit">Submit</button>
+        </form>
+        <div class="filter">
+          <div>
+            <input type="checkbox" id="gluten-free" name="gluten-free"
+           checked>
+            <label for="gluten-free">Gluten-Free</label>
+          </div>
+          <div>
+            <input type="checkbox" id="vegan" name="vegan"
+           checked>
+            <label for="vegan">Vegan</label>
+          </div>
+          <div>
+            <input type="checkbox" id="vegetarian" name="vegetarian">
+            <label for="vegetarian">Vegetarian</label>
+          </div>
+        </div> 
+      </nav>
+
+      
+
+      <ul class="results-list">
+        <li class="restaurant-item detailed">
+          <h2>Chico's Food Emporium</h2>
+          <ul> 
+            <li></li>
+          </ul>
+
+
+
+          <!-- Name, Address, Menu, Phone Number, Website Link, Price Range, Type of Food (e.g. Indian, Japanese, etc), the type of dietary-requirements it meets(gluten-free, vegan, vegetarian). -->
+
+        </li>
+        <li class="restaurant-item"><p>Restaurant 2</p></li>
+        <li class="restaurant-item"><p>Restaurant 3</p></li>
+        <li class="restaurant-item"><p>Restaurant 4</p></li>
+        <li class="restaurant-item"><p>Restaurant 5</p></li>
+      </ul>
+
+
+
+
+    </section>
+    
+    <!-- VIEW 3: :RESOURCE RESTAURANT VIEW ????  -->
+    <!-- <header><h2>:Resource Restaurant View ???</h2></header> -->
+    <!-- <section class="per-restaurant"></section> -->
+
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>

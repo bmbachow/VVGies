@@ -2,10 +2,101 @@
 
 * {
   box-sizing: border-box;
+  /* border: 1px solid red; */
 }
 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  background-color: rgb(243, 243, 243);
 
+}
 
+main {
+  /* margin: 20px; */
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 600px;
+}
+
+section { 
+  border: 1px solid black;
+  max-width: 600px;
+  min-height: 800px;
+  margin-bottom: 100px;
+  background-color: white
+}
+
+.brand {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+
+}
+
+nav {
+  position: relative;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  /* margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto; */
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.filter {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+form {
+  padding: 10px;
+}
+
+input {
+  padding: 10px;
+}
+
+button {
+  padding: 10px;
+}
+
+ul {
+  padding: 0 10px 0 10px;
+  list-style: none;
+}
+
+.restaurant-item {
+  position: relative;
+  border: 1px solid grey;
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 200px;
+  margin-bottom: 20px;
+  vertical-align: middle;
+  padding: 20px;
+}
+
+.restaurant-item p {
+  font-weight: bold;
+  font-size: 2em;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* text-align: center; */
+  /* border: 1px solid red; */
+}
+
+/* detailed view for restaurant */
+
+.detailed h2 {
+  margin-top: 0;
+}
 
 
 
