@@ -22,13 +22,28 @@
     <header><h2>:Results View</h2></header>
     
     <section class="results">
+      
       <header class="brand">Branding?</header>
+      
       <nav class="nav-search">
+        
         <form>
-          <label for="searchbar"></label>
-          <input type="text" id="searchbar" name="searchbar" placeholder="Los Angeles" required>
+          <div>
+            <label for="searchbar">Area</label>
+            <input type="text" id="searchbar" name="searchbar" placeholder="Echo Park, Los Angeles" required>
+          </div>
+          <div>
+            <label for="distance">Distance</label>
+            <select name="distance">
+                <option>2 miles</option>
+                <option>5 miles</option>
+                <option>10 miles</option>
+                <option>25 miles</option>
+            </select> 
+          </div>
           <button type="submit">Submit</button>
         </form>
+
         <div class="filter">
           <div>
             <input type="checkbox" id="gluten-free" name="gluten-free"
@@ -47,28 +62,41 @@
         </div> 
       </nav>
 
-      
+      <div class="sort">
+        <label for="sort">Sorted by: </label>
+        <select name="distance">
+          <option>Best Match</option>
+          <option>Overall Rating</option>
+          <option>Price Range</option>
+          <option>Alphabetically</option>
+        </select> 
+        <p><b>120</b> restaurants found</p>
+      </div>
 
       <ul class="results-list">
+        
         <li class="restaurant-item detailed">
-          <h2>Chico's Food Emporium</h2>
+          <h2>Shojin</h2>
           <ul class="food-types"> 
-            <li class="cuisine">Indian</li>
+            <li class="cuisine">Japanese</li>
             <li class="price">$$</li>
-            <li class="diet">Gluten-Free</li>
             <li class="diet">Vegan</li>
+            <li class="diet">Gluten-Free</li> 
           </ul>
-
-
-
+          <p class="description">Spicy tofu replaces the tuna in the sushi served at this refined vegan Japanese eatery.</p>
+          <address>
+            <p><b>Address:</b>A 333 S Alameda St, Los Angeles, CA 90013</p>
+            <p><b>Phone:</b> (213) 617-0305</p>
+            <p><b><a href="http://www.theshojin.com/menu" target="_blank">Menu</a> | <a href="http://www.theshojin.com/" target="_blank">Website</a></b></p>
+          </address>
 
           <!-- Name, Address, Menu, Phone Number, Website Link, Price Range, Type of Food (e.g. Indian, Japanese, etc), the type of dietary-requirements it meets(gluten-free, vegan, vegetarian). -->
 
         </li>
-        <li class="restaurant-item"><p>Restaurant 2</p></li>
-        <li class="restaurant-item"><p>Restaurant 3</p></li>
-        <li class="restaurant-item"><p>Restaurant 4</p></li>
-        <li class="restaurant-item"><p>Restaurant 5</p></li>
+        <li class="restaurant-item"><h2>Restaurant 2</h2></li>
+        <li class="restaurant-item"><h2>Restaurant 3</h2></li>
+        <li class="restaurant-item"><h2>Restaurant 4</h2></li>
+        <li class="restaurant-item"><h2>Restaurant 5</h2></li>
       </ul>
 
 

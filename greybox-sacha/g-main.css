@@ -47,22 +47,64 @@ nav {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.filter {
-  position: absolute;
-  top: 15px;
-  right: 20px;
+.sort {
+  position: relative;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  /* margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto; */
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
+.sort p {
+  position: absolute;
+  top: 14px;
+  right: 10px;
+  margin: 0;
+  font-style: italic;
+}
+
+
+
 form {
-  padding: 10px;
+  /* padding: 10px; */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+form div {
+  display: inline-block;
+}
+
+form label {
+  display: block;
+  font-size: 0.8rem;
+  padding: 5px;
 }
 
 input {
   padding: 10px;
 }
 
+#searchbar {
+  width: 300px;
+}
+
 button {
+  height: 45px;
   padding: 10px;
+  margin-top: 20px;
+}
+
+.filter div {
+  display: inline-block;
+  margin-right: 10px;
+  /* position: absolute;
+  top: 15px;
+  right: 20px; */
 }
 
 ul {
@@ -74,22 +116,20 @@ ul {
   position: relative;
   border: 1px solid grey;
   background-color: rgba(0, 0, 0, 0.1);
-  height: 200px;
+  min-height: 200px;
   margin-bottom: 20px;
   vertical-align: middle;
   padding: 20px;
 }
 
 .restaurant-item p {
-  font-weight: bold;
-  font-size: 2rem;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* text-align: center; */
-  /* border: 1px solid red; */
+
+}
+
+address {
+  font-style: normal;
+  font-size: 0.8rem;
+  line-height: 1.4;
 }
 
 /* detailed view for restaurant */
@@ -123,7 +163,13 @@ ul {
   color: white;
 }
 
+a {
+  color: black;
+}
 
+a:hover {
+  background-color: lightskyblue;
+}
 
 
 
