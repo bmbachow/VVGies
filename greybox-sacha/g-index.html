@@ -16,21 +16,21 @@
     
     <!-- VIEW 1: ROOT VIEW (init search) -->
     <!-- <header><h2>Root View</h2></header> -->
-    <!-- <section class="root"></section> -->
+    <!-- <section class="view-root"></section> -->
     
     <!-- VIEW 2: :RESULTS VIEW -->
     <header><h2>:Results View</h2></header>
     
-    <section class="results">
+    <section class="view-results">
       
-      <header class="brand">Branding?</header>
+      <header class="branding">[Branding?]</header>
       
-      <nav class="nav-search">
+      <nav class="searchbar">
         
         <form>
-          <div class="searchbar">
-            <label for="searchbar">Area</label>
-            <input type="text" id="searchbar" name="searchbar" placeholder="Echo Park, Los Angeles" required>
+          <div class="area">
+            <label for="area">Area</label>
+            <input type="text" id="area-input" name="area" placeholder="Echo Park, Los Angeles" required>
             <button type="submit">Submit</button>
           </div>
           
@@ -45,7 +45,7 @@
           </div>
         </form>
 
-        <div class="filter">
+        <div class="filter-by-diet">
           <div>
             <input type="checkbox" id="gluten-free" name="gluten-free"
            checked>
@@ -63,9 +63,9 @@
         </div> 
       </nav>
 
-      <div class="sort">
-        <label for="sort">Sorted by: </label>
-        <select name="distance">
+      <div class="sortbar">
+        <label for="criteria">Sorted by: </label>
+        <select name="criteria">
           <option>Best Match</option>
           <option>Overall Rating</option>
           <option>Price Range</option>
@@ -76,7 +76,7 @@
 
       <ul class="results-list">
         
-        <li class="restaurant-item detailed">
+        <li class="restaurant-item">
           <h2>Shojin</h2>
           <ul class="food-types"> 
             <li class="cuisine">Japanese</li>
@@ -100,14 +100,13 @@
         <li class="restaurant-item"><h2>Restaurant 5</h2></li>
       </ul>
 
-
-
+      <footer>Made by Brian & Sacha</footer>
 
     </section>
     
-    <!-- VIEW 3: :RESOURCE RESTAURANT VIEW ????  -->
+    <!-- VIEW 3: :RESOURCE RESTAURANT VIEW ???? TBD if needed (for share functionality) -->
     <!-- <header><h2>:Resource Restaurant View ???</h2></header> -->
-    <!-- <section class="per-restaurant"></section> -->
+    <!-- <section class="view-per-restaurant"></section> -->
 
   </main>
 

@@ -5,6 +5,8 @@
   /* border: 1px solid red; */
 }
 
+/*/ UNIVERSAL ////////////////////////////////////////*/
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1rem;
@@ -13,7 +15,6 @@ body {
 }
 
 main {
-  /* margin: 20px; */
   margin-right: auto;
   margin-left: auto;
   max-width: 1080px;
@@ -27,14 +28,25 @@ section {
   background-color: white
 }
 
-.brand {
+.branding {
   border: 1px solid black;
   padding: 10px;
   margin: 10px;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
-
 }
+
+footer {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  font-size: 0.8rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+
+/*/ SEARCHBAR ////////////////////////////////////////*/
 
 nav {
   position: relative;
@@ -47,36 +59,10 @@ nav {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.sort {
-  position: relative;
-  border: 1px solid black;
-  padding: 10px;
-  margin: 10px;
-  /* margin-top: 10px;
-  margin-right: auto;
-  margin-left: auto; */
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.sort p {
-  position: absolute;
-  top: 14px;
-  right: 10px;
-  margin: 0;
-  font-style: italic;
-}
-
-
-
 form {
-  /* padding: 10px; */
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-}
-
-form div {
-  display: inline-block;
 }
 
 form label {
@@ -89,11 +75,11 @@ input {
   padding: 10px;
 }
 
-.searchbar {
+.area {
   flex-grow:2;
 }
 
-#searchbar {
+#area-input {
   width: 60%;
 }
 
@@ -107,13 +93,40 @@ button {
   /* margin-top: 20px; */
 }
 
-.filter div {
+.filter-by-diet div {
   display: inline-block;
   margin-right: 10px;
   /* position: absolute;
   top: 15px;
   right: 20px; */
 }
+
+
+
+/*/ SORTBAR ////////////////////////////////////////*/
+
+.sortbar {
+  position: relative;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  /* margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto; */
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.sortbar p {
+  position: absolute;
+  top: 14px;
+  right: 10px;
+  margin: 0;
+  font-style: italic;
+}
+
+
+
+/*/ RESULTS ////////////////////////////////////////*/
 
 ul {
   padding: 0 10px 0 10px;
@@ -130,19 +143,7 @@ ul {
   padding: 20px;
 }
 
-.restaurant-item p {
-
-}
-
-address {
-  font-style: normal;
-  font-size: 0.8rem;
-  line-height: 1.4;
-}
-
-/* detailed view for restaurant */
-
-.detailed h2 {
+h2 {
   margin-top: 0;
 }
 .food-types {
@@ -171,6 +172,12 @@ address {
   color: white;
 }
 
+address {
+  font-style: normal;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
 a {
   color: black;
 }
@@ -178,11 +185,6 @@ a {
 a:hover {
   background-color: lightskyblue;
 }
-
-
-
-
-
 
 
 
