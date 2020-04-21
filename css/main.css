@@ -90,7 +90,7 @@ input {
   flex-grow:2;
 }
 
-#area-input {
+.area-input {
   width: 60%;
 }
 
