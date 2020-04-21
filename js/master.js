@@ -25,18 +25,65 @@ function displayView(view) {
 }
 
 function formatQueryParams(params) {
-  // format parameters into a string that can be appended to url
-
+  // take object 'params' and .map key/values to make an array
+  const queryItems = Object.keys(params).map( key => {
+    return `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`;
+  });
+  // return => convert array into a string
+  // concatenating each array item with an ampersand (&)
+  return queryItems.join('&');
 }
 
 function fetchRestaurantInfo(area, distance, diet) {
-  // fetch this info from Yelp business search API
-  // formatQueryParams(params)
-  // thet get http url + params
-  
-  // if HTTP response is 200 ok without a catch
-  // renderSearchResults(data);
+  // console.log(`area: ${area} / distance: ${distance} / diet: ${diet}`);
 
+  const baseURL = 'https://api.yelp.com/v3/businesses/search';
+  const apiKey = 'IGnYDkKpA5hFg8el7-9WyyoLx5Z5sv2nssKYPflu_KGq26puqqFYSR9vikWHbTeSt9Vm1xzlQYKjzvf7uoJrkNTNfGdgJ5S7H3OW_CXlTJChkm-HxwgWNFnx-fOZXnYx';
+
+  // BLOCKED BY CORS yet again
+  // pass apiKey through params for now...
+  // although it looks like there is no way to pass apiKey parameter to Yelp =/
+  // Solutions?
+  // [1] https://stackoverflow.com/questions/51433786/yelp-api-http-request-authorization-bearer
+  const options = {
+    headers: new Headers({
+      'Authorization': 'Bearer ' + apiKey,
+    })
+  };
+
+  // apparently Yelp 'radius' value must be in meters (max value: 40000)
+  // convert distance from miles to meters
+  let distanceMeters = Math.floor(distance * 1609.344);
+  const maxMeters = 40000;
+  if (distanceMeters > maxMeters) {
+    distanceMeters = maxMeters;
+  }
+
+  const params = {
+    location: area,
+    category: diet,
+    radius: distanceMeters,
+  };
+  // console.log(params);
+
+  const queryString = formatQueryParams(params);
+  const url = baseURL + '?' + queryString;
+  console.log(url);
+
+  fetch(url, options) // disabled due to CORS
+  // fetch(url)
+  .then(response => {
+    if(!Response.ok) {
+      throw new Error(response.statusText);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+    renderSearchResults(data);
+  })
+  .catch(err => console.log(err));
+  
   
   // {{ FURTHER v2 ITERATION }}
   // pass the Yelp restaurant address data to Google Maps Geocode API
@@ -58,6 +105,7 @@ function generateSearchResults(data) {
 // RENDERING FUNCTIONS ///////////////////////////////////////
 
 function renderSearchResults(data) {
+  console.log(`renderSearchResults() invoked...`);
   // pass data back and forth to another fn to generate HTML
 
   // then render HTML into the DOM 
@@ -73,20 +121,22 @@ function handleSubmission() {
   // on submit get values from inputs (area, distance, diet)
   $('.search-form').on('submit', event => {
     event.preventDefault();
-    console.log(`event: ${event.target}`);
-
     const area = $('.area-input').val();
     const distance = $('.distance-input').val();
-    const diet = $('.checkbox:checked').val();
-    console.log(`area: ${area} / distance: ${distance} / diet: ${diet}`)
+  
+    // ** REFACTOR **
+    // having difficulty getting values of checked checkbox inputs
+    // so for now hard-coding value so I can proceed with fetch
+    // const diet = $('checkbox').val();
+    const diet = 'vegan';
 
+    fetchRestaurantInfo(area, distance, diet);
   });
 
-
-
-  // fetch restaurant data from Yelp API
-
-  // which view to display? root or results? 
+  // toggle which view to display 
+  // (root or results?)
+  // but invoke later in different fn... 
+  // likely fn fetch() .then(data) else fn render()
   // displayView(view); 
 }
 
