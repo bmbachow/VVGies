@@ -20,7 +20,7 @@
       
       <nav class="searchbar">
       
-        <form>
+        <form class="search-form">
           <div class="area">
             <label for="area">Area</label>
             <input type="text" class="area-input" name="area" placeholder="Neighborhood or zipcode..." required>
@@ -29,11 +29,11 @@
           
           <div class="distance">
             <label for="distance">Distance</label>
-            <select name="distance">
-                <option>2 miles</option>
-                <option>5 miles</option>
-                <option>10 miles</option>
-                <option>25 miles</option>
+            <select name="distance-input" class="distance-input">
+                <option value="2 miles">2 miles</option>
+                <option value="5 miles">5 miles</option>
+                <option value="10 miles">10 miles</option>
+                <option value="25 miles">25 miles</option>
             </select> 
           </div>
         </form>
@@ -69,16 +69,16 @@
       
       <nav class="searchbar">
         
-        <form>
+        <form class="search-form"> 
           <div class="area">
             <label for="area">Area</label>
             <input type="text" class="area-input" name="area" placeholder="Echo Park, Los Angeles" required>
             <button type="submit">Submit</button>
           </div>
-          
+  
           <div class="distance">
             <label for="distance">Distance</label>
-            <select name="distance">
+            <select name="distance" class="distance-input">
                 <option>2 miles</option>
                 <option>5 miles</option>
                 <option>10 miles</option>

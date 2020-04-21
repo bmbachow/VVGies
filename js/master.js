@@ -71,6 +71,19 @@ function renderSearchResults(data) {
 function handleSubmission() {
   console.log(`handleSubmission init`);
   // on submit get values from inputs (area, distance, diet)
+  $('.search-form').on('submit', event => {
+    event.preventDefault();
+    console.log(`event: ${event.target}`);
+
+    const area = $('.area-input').val();
+    const distance = $('.distance-input').val();
+    const diet = $('.checkbox:checked').val();
+    console.log(`area: ${area} / distance: ${distance} / diet: ${diet}`)
+
+  });
+
+
+
   // fetch restaurant data from Yelp API
 
   // which view to display? root or results? 
