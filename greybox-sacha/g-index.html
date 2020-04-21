@@ -14,11 +14,52 @@
   
   <main>
     
-    <!-- VIEW 1: ROOT VIEW (init search) -->
-    <!-- <header><h2>Root View</h2></header> -->
-    <!-- <section class="view-root"></section> -->
+    <!-- VIEW 1: ROOT VIEW (init search) ////////////////////////////////////////////// -->
+    <header><h2>Root View</h2></header>
     
-    <!-- VIEW 2: :RESULTS VIEW -->
+    <section class="view-root">
+      
+      <nav class="searchbar">
+      
+        <form>
+          <div class="area">
+            <label for="area">Area</label>
+            <input type="text" id="area-input" name="area" placeholder="Neighborhood or zipcode..." required>
+            <button type="submit">Submit</button>
+          </div>
+          
+          <div class="distance">
+            <label for="distance">Distance</label>
+            <select name="distance">
+                <option>2 miles</option>
+                <option>5 miles</option>
+                <option>10 miles</option>
+                <option>25 miles</option>
+            </select> 
+          </div>
+        </form>
+
+        <div class="filter-by-diet">
+          <div>
+            <input type="checkbox" id="gluten-free" name="gluten-free">
+            <label for="gluten-free">Gluten-Free</label>
+          </div>
+          <div>
+            <input type="checkbox" id="vegan" name="vegan">
+            <label for="vegan">Vegan</label>
+          </div>
+          <div>
+            <input type="checkbox" id="vegetarian" name="vegetarian">
+            <label for="vegetarian">Vegetarian</label>
+          </div>
+        </div> 
+
+      </nav>
+
+    </section>
+
+    
+    <!-- VIEW 2: :RESULTS VIEW ////////////////////////////////////////////// -->
     <header><h2>:Results View</h2></header>
     
     <section class="view-results">
@@ -61,6 +102,7 @@
             <label for="vegetarian">Vegetarian</label>
           </div>
         </div> 
+        
       </nav>
 
       <div class="sortbar">
@@ -104,8 +146,11 @@
 
     </section>
     
-    <!-- VIEW 3: :RESOURCE RESTAURANT VIEW ???? TBD if needed (for share functionality) -->
+
+    <!-- VIEW 3: :RESOURCE RESTAURANT VIEW ???? ////////////////////////////////////////////// -->
+    <!-- TBD if needed (for share functionality) -->
     <!-- <header><h2>:Resource Restaurant View ???</h2></header> -->
+    
     <!-- <section class="view-per-restaurant"></section> -->
 
   </main>
