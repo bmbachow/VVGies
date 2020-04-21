@@ -45,8 +45,12 @@ function fetchRestaurantInfo(area, distance, diet) {
   // although it looks like there is no way to pass apiKey parameter to Yelp =/
   // Solutions?
   // [1] https://stackoverflow.com/questions/51433786/yelp-api-http-request-authorization-bearer
+  // [2] https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSMissingAllowOrigin
+
   const options = {
     headers: new Headers({
+      'Access-Control-Allow-Origin': 'https://api.yelp.com',
+      // 'Access-Control-Allow-Origin': '*',
       'Authorization': 'Bearer ' + apiKey,
     })
   };
