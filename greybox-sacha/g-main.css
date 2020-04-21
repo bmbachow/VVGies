@@ -124,6 +124,12 @@ main .view-root {
   color: white;
 }
 
+.view-root footer {
+  position: absolute;
+  width: 95%;
+  bottom: 5px;
+}
+
 
 /*/ SORTBAR ////////////////////////////////////////*/
 
