@@ -9,19 +9,19 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1rem;
   background-color: rgb(243, 243, 243);
-
+  margin: 0 10px 0 10px;
 }
 
 main {
   /* margin: 20px; */
   margin-right: auto;
   margin-left: auto;
-  max-width: 600px;
+  max-width: 1080px;
 }
 
 section { 
   border: 1px solid black;
-  max-width: 600px;
+  max-width: 1080px;
   min-height: 800px;
   margin-bottom: 100px;
   background-color: white
@@ -89,14 +89,22 @@ input {
   padding: 10px;
 }
 
+.searchbar {
+  flex-grow:2;
+}
+
 #searchbar {
-  width: 300px;
+  width: 60%;
+}
+
+.distance {
+  flex-grow: 1;
 }
 
 button {
   height: 45px;
   padding: 10px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .filter div {
