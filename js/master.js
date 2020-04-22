@@ -1,4 +1,5 @@
 'use strict';
+/* eslint-disable indent */
 
 //////////////////////////////////////////////////////////////
 // SEPARATION OF CONCERNS: TYPES OF FUNCTIONS
@@ -21,23 +22,24 @@ $(() => {
 // MISCELLANEOUS /////////////////////////////////////////////
 
 function displayView(view) {
-  // to toggle class of <section> views: hidden or not
+  if (view === 'results') {
+    $('.display-container-results-view').removeClass('hidden');
+    $('.display-container-root-view').addClass('hidden');
+  } else {
+    $('.display-container-results-view').addClass('hidden');
+    $('.display-container-root-view').removeClass('hidden');
+  }
 }
 
 function formatQueryParams(params) {
-  // take object 'params' and .map key/values to make an array
   const queryItems = Object.keys(params).map(key => {
     return `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`;
   });
-  // return => convert array into a string
-  // concatenating each array item with an ampersand (&)
   return queryItems.join('&');
 }
 
 function fetchRestaurantInfo(area, distance, diet) {
-  // console.log(`area: ${area} / distance: ${distance} / diet: ${diet}`);
-
-  
+ 
   const baseURL = 'https://api.yelp.com/v3/businesses/search';
   const apiKey = 'IGnYDkKpA5hFg8el7-9WyyoLx5Z5sv2nssKYPflu_KGq26puqqFYSR9vikWHbTeSt9Vm1xzlQYKjzvf7uoJrkNTNfGdgJ5S7H3OW_CXlTJChkm-HxwgWNFnx-fOZXnYx';
 
@@ -97,50 +99,35 @@ function fetchRestaurantInfo(area, distance, diet) {
 
 function generateSearchResults(data) {
   const array = [];
-  
-//   "categories": [
-//     {
-//         "alias": "poke",
-//         "title": "Poke"
-//     },
-//     {
-//         "alias": "japanese",
-//         "title": "Japanese"
-//     },
-//     {
-//         "alias": "gluten_free",
-//         "title": "Gluten-Free"
-//     }
-// ],
+  const arrCategories = [];
 
   for (let i = 0; i < data.businesses.length; i++) {
+
+    for (let j = 0; j < data.businesses[i].categories.length; j++) {
+      arrCategories.push(`
+        <li class="cuisine">${data.businesses[i].categories[j].title}</li>
+      `);
+    }
+    let strCategories = arrCategories.join('');
+
     array.push(`<li class="restaurant-item">
     <h2>${data.businesses[i].name}</h2>
     <ul class="food-types"> 
-      <li class="cuisine">${data.businesses[i]}.</li>
-      <li class="price">$$</li>
-      <li class="diet">Vegan</li>
-      <li class="diet">Gluten-Free</li> 
+      <!--<li class="cuisine">${data.businesses[i].categories[0].title}</li>-->
+      ${strCategories}
+      <li class="price">${data.businesses[i].price}</li>
+      <li class="diet">Rating:${data.businesses[i].rating}</li>
+      <li class="diet">Reviews:${data.businesses[i].review_count}</li>
     </ul>
-    <p class="description">Spicy tofu replaces the tuna in the sushi served at this refined vegan Japanese eatery.</p>
     <address>
-      <p><b>Address:</b> 333 S Alameda St, Los Angeles, CA 90013</p>
-      <p><b>Phone:</b> (213) 617-0305</p>
-      <p><b><a href="http://www.theshojin.com/menu" target="_blank">Menu</a> | <a href="http://www.theshojin.com/" target="_blank">Website</a></b></p>
+      <p><b>Address:</b> ${data.businesses[i].location.address1}, ${data.businesses[i].location.city}, ${data.businesses[i].location.state} ${data.businesses[i].location.zip_code}</p>
+      <p><b>Phone:</b> ${data.businesses[i].phone}</p>
     </address>
-
-    <!-- Name, Address, Menu, Phone Number, Website Link, Price Range, Type of Food (e.g. Indian, Japanese, etc), the type of dietary-requirements it meets(gluten-free, vegan, vegetarian). -->
-
   </li>
-    
-    
-    
-    
-    
-    `)
-
+    `);
+    arrCategories.length = 0;
   }
-
+  return array.join('');
 }
 
 
@@ -150,7 +137,9 @@ function generateSearchResults(data) {
 function renderSearchResults(data) {
   console.log(`renderSearchResults() invoked...`);
   const results = generateSearchResults(data);
+  console.log(results);
   $('.results-list').html(results);
+  displayView('results');
 }
 
 
