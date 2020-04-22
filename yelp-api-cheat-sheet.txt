@@ -1,0 +1,23 @@
+Yelp API cheatsheet
+====================================
+Search endpoint url https://api.yelp.com/v3/businesses/search
+
+?term=restaurants&location=92697
+
+authentication endpoint https://api.yelp.com/oauth2/token
+
+client_id: ????????????
+
+client_secret: ?????????????????
+
+Access token: ????????????????? (token good for 7.3 days, might want to make automation that gets a new token periodically if possible)
+
+create header key = Authorization, value = Bearer <>token<>
+
+
+
+
+
+
+
+yelp apparently no longer requires oauth2.0
