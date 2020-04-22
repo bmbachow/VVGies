@@ -78,13 +78,13 @@ function fetchRestaurantInfo(area, distance, diet) {
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-      STORE.push(response);
+      // STORE.push(response);
       return response.json();
     })
     .then(data => {
       // console.log(data);
-      STORE.push(data);
-      console.log(STORE);
+      // STORE.push(data);
+      // console.log(STORE);
       renderSearchResults(data);
     })
     .catch(err => console.log(err));
@@ -133,16 +133,38 @@ function generateSearchResults(data) {
   return array.join('');
 }
 
+function generateSearchCriteria(data) {
+
+  return `
+  <div>
+    <input type="checkbox" id="gluten-free-check" name="gluten-free" value="gluten-free">
+    <label for="gluten-free">Gluten-Free</label>
+  </div>
+  <div>
+    <input type="checkbox" id="vegan-check" name="vegan" value="vegan">
+    <label for="vegan">Vegan</label>
+  </div>
+  <div>
+    <input type="checkbox" id="vegetarian-check" name="vegetarian" value="vegetarian">
+    <label for="vegetarian">Vegetarian</label>
+  </div>
+  `;
+}
 
 
 // RENDERING FUNCTIONS ///////////////////////////////////////
 
 function renderSearchResults(data) {
-  console.log(`renderSearchResults() invoked...`);
+  // console.log(`renderSearchResults() invoked...`);
   const results = generateSearchResults(data);
-  console.log(results);
+  // console.log(results);
   $('.results-list').html(results);
   displayView('results');
+}
+
+function renderSearchCriteria(diet) {
+  const checkboxesChecked = generateSearchCriteria(diet);
+  $('.filter-by-diet').html(checkboxesChecked);
 }
 
 
@@ -156,25 +178,21 @@ function handleSubmission() {
     event.preventDefault();
     const area = $('.area-input').val();
     const distance = $('.distance-input').val();
-
-    // ** REFACTOR **
-    // having difficulty getting values of checked checkbox inputs
-    // so for now hard-coding value so I can proceed with fetch
-    
-    
     const diet = [];
     if ($('#gluten-free-check').is(':checked')) {
       diet.push('gluten-free');
+      $('.view-results').find('#gluten-free-check').attr('checked', true);
     } 
     if ($('#vegan-check').is(':checked')) {
       diet.push('vegan');
+      $('.view-results').find('#vegan-check').attr('checked', true);
     } 
     if ($('#vegetarian-check').is(':checked')) {
       diet.push('vegetarian');
+      $('.view-results').find('#vegetarian-check').attr('checked', true);
     } 
-    // const diet = 'vegan';
 
-    console.log(area, distance, diet);
+    // console.log(area, distance, diet);
     fetchRestaurantInfo(area, distance, diet);
   });
 
