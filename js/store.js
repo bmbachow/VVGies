@@ -1,1 +1,2 @@
 const STORE = 
+current STORE = []
