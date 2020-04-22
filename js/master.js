@@ -73,7 +73,7 @@ function fetchRestaurantInfo(area, distance, diet) {
   fetch(url, options) // disabled due to CORS
   // fetch(url)
   .then(response => {
-    if(!Response.ok) {
+    if(!response.ok) {
       throw new Error(response.statusText);
     }
     return response.json();
