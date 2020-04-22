@@ -117,7 +117,7 @@ function generateSearchResults(data) {
     array.push(`<li class="restaurant-item">
     <h2>${data.businesses[i].name}</h2>
     <ul class="food-types"> 
-      <li class="cuisine">${data.businesses[i].</li>
+      <li class="cuisine">${data.businesses[i]}.</li>
       <li class="price">$$</li>
       <li class="diet">Vegan</li>
       <li class="diet">Gluten-Free</li> 
