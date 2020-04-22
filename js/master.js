@@ -9,6 +9,9 @@
 // Event Handlers
 //////////////////////////////////////////////////////////////
 
+
+
+const STORE = [];
 // INIT
 function init() {
   handleSubmission();
@@ -72,7 +75,7 @@ function fetchRestaurantInfo(area, distance, diet) {
   const url = proxyBypassURL + baseURL + '?' + queryString;
   console.log(url);
 
-const STORE = [];
+
 
   fetch(url, options) // disabled due to CORS
     // fetch(url)
@@ -87,7 +90,7 @@ const STORE = [];
       renderSearchResults(data);
     })
     .catch(err => console.log(err));
-   
+  }  
 
 function generateLocalStore(STORE){
   JSON.parse(STORE);
@@ -169,9 +172,21 @@ function handleSubmission() {
     // ** REFACTOR **
     // having difficulty getting values of checked checkbox inputs
     // so for now hard-coding value so I can proceed with fetch
-    // const diet = $('checkbox').val();
-    const diet = 'vegan';
+    
+    
+    const diet = [];
+    if ($('#gluten-free-check').is(':checked')) {
+      diet.push('gluten-free');
+    } 
+    if ($('#vegan-check').is(':checked')) {
+      diet.push('vegan');
+    } 
+    if ($('#vegetarian-check').is(':checked')) {
+      diet.push('vegetarian');
+    } 
+    // const diet = 'vegan';
 
+    console.log(area, distance, diet);
     fetchRestaurantInfo(area, distance, diet);
   });
 

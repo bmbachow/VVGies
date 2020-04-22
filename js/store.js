@@ -1,13 +1,10 @@
-// STORE = [];
-// console.log(STORE);
+'use strict';
 
-// function generateLocalStore(){
-//   STORE.push(response);
-//   return STORE;
+// const STORE = [];
+
+// function generateLocalStore(data){
+//   // return JSON.parse(data);
 // }
-// console.log(generateLocalStore());
-
-
 
 
 
