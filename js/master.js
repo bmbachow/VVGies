@@ -69,7 +69,7 @@ function fetchRestaurantInfo(area, distance, diet) {
 
   const params = {
     location: area,
-    category: diet,
+    categories: diet,
     radius: distanceMeters,
   };
   // console.log(params);
@@ -211,7 +211,7 @@ function handleSubmission() {
     const distance = $('.distance-input').val();
     const diet = [];
     if ($('#gluten-free-check').is(':checked')) {
-      diet.push('gluten-free');
+      diet.push('gluten_free');
       $('.view-results').find('#gluten-free-check').attr('checked', true);
     } 
     if ($('#vegan-check').is(':checked')) {
