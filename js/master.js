@@ -99,14 +99,25 @@ function fetchRestaurantInfo(area, distance, diet) {
 
 function generateSearchResults(data) {
   const array = [];
+  const arrCategories = [];
 
   for (let i = 0; i < data.businesses.length; i++) {
+
+    for (let j = 0; j < data.businesses[i].categories.length; j++) {
+      arrCategories.push(`
+        <li class="cuisine">${data.businesses[i].categories[j].title}</li>
+      `);
+    }
+    let strCategories = arrCategories.join('');
 
     array.push(`<li class="restaurant-item">
     <h2>${data.businesses[i].name}</h2>
     <ul class="food-types"> 
-      <li class="cuisine">${data.businesses[i].categories[0].title}</li>
+      <!--<li class="cuisine">${data.businesses[i].categories[0].title}</li>-->
+      ${strCategories}
       <li class="price">${data.businesses[i].price}</li>
+      <li class="diet">Rating:${data.businesses[i].rating}</li>
+      <li class="diet">Reviews:${data.businesses[i].review_count}</li>
     </ul>
     <address>
       <p><b>Address:</b> ${data.businesses[i].location.address1}, ${data.businesses[i].location.city}, ${data.businesses[i].location.state} ${data.businesses[i].location.zip_code}</p>
@@ -114,6 +125,7 @@ function generateSearchResults(data) {
     </address>
   </li>
     `);
+    arrCategories.length = 0;
   }
   return array.join('');
 }
