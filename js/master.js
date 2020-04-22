@@ -72,28 +72,38 @@ function fetchRestaurantInfo(area, distance, diet) {
   const url = proxyBypassURL + baseURL + '?' + queryString;
   console.log(url);
 
+const STORE = [];
+
   fetch(url, options) // disabled due to CORS
     // fetch(url)
     .then(response => {
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-      STORE.push(response);
       return response.json();
     })
     .then(data => {
-      // console.log(data);
-      console.log(STORE);
+      STORE.push(data);
       renderSearchResults(data);
     })
     .catch(err => console.log(err));
+   
 
+function generateLocalStore(STORE){
+  JSON.parse(STORE);
+  return STORE;
+}
+
+console.log(STORE);
+    
+    
+       
 
   // {{ FURTHER v2 ITERATION }}
   // pass the Yelp restaurant address data to Google Maps Geocode API
   // fetchMapData(addresses)
   // {{ ... will Function Stub / Psuedocode later }}
-}
+
 
 
 

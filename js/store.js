@@ -1,10 +1,14 @@
-const STORE = [];
+// STORE = [];
+// console.log(STORE);
 
-function generateLocalStore(response){
-  return JSON.parse(response);
-}
+// function generateLocalStore(){
+//   STORE.push(response);
+//   return STORE;
+// }
+// console.log(generateLocalStore());
 
-console.log(generateLocalStore({ "bookname ":"VB BLACK BOOK", "price":500 }));
+
+
 
 
 
