@@ -37,20 +37,16 @@ function formatQueryParams(params) {
 function fetchRestaurantInfo(area, distance, diet) {
   // console.log(`area: ${area} / distance: ${distance} / diet: ${diet}`);
 
+  
   const baseURL = 'https://api.yelp.com/v3/businesses/search';
   const apiKey = 'IGnYDkKpA5hFg8el7-9WyyoLx5Z5sv2nssKYPflu_KGq26puqqFYSR9vikWHbTeSt9Vm1xzlQYKjzvf7uoJrkNTNfGdgJ5S7H3OW_CXlTJChkm-HxwgWNFnx-fOZXnYx';
 
-  // BLOCKED BY CORS yet again
-  // pass apiKey through params for now...
-  // although it looks like there is no way to pass apiKey parameter to Yelp =/
-  // Solutions?
-  // [1] https://stackoverflow.com/questions/51433786/yelp-api-http-request-authorization-bearer
-  // [2] https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSMissingAllowOrigin
+  // get get past the CORS issue
+  // bypass with a proxy
+  const proxyBypassURL = 'http://galvanize-cors.herokuapp.com/'; 
 
   const options = {
     headers: new Headers({
-      'Access-Control-Allow-Origin': 'https://api.yelp.com',
-      // 'Access-Control-Allow-Origin': '*',
       'Authorization': 'Bearer ' + apiKey,
     })
   };
@@ -71,7 +67,7 @@ function fetchRestaurantInfo(area, distance, diet) {
   // console.log(params);
 
   const queryString = formatQueryParams(params);
-  const url = baseURL + '?' + queryString;
+  const url = proxyBypassURL + baseURL + '?' + queryString;
   console.log(url);
 
   fetch(url, options) // disabled due to CORS
