@@ -157,9 +157,21 @@ function handleSubmission() {
     // ** REFACTOR **
     // having difficulty getting values of checked checkbox inputs
     // so for now hard-coding value so I can proceed with fetch
-    // const diet = $('checkbox').val();
-    const diet = 'vegan';
+    
+    
+    const diet = [];
+    if ($('#gluten-free-check').is(':checked')) {
+      diet.push('gluten-free');
+    } 
+    if ($('#vegan-check').is(':checked')) {
+      diet.push('vegan');
+    } 
+    if ($('#vegetarian-check').is(':checked')) {
+      diet.push('vegetarian');
+    } 
+    // const diet = 'vegan';
 
+    console.log(area, distance, diet);
     fetchRestaurantInfo(area, distance, diet);
   });
 
