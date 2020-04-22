@@ -15,6 +15,7 @@ const STORE = [];
 // INIT
 function init() {
   handleSubmission();
+  handleSort();
 }
 
 $(() => {
@@ -23,6 +24,11 @@ $(() => {
 
 
 // MISCELLANEOUS /////////////////////////////////////////////
+
+function sortSearchResults() {
+  // resorting order of objects in sachaSTORE array
+  // first instance: sort alphabetically by data.businesses[i].name
+}
 
 function displayView(view) {
   if (view === 'results') {
@@ -66,7 +72,7 @@ function fetchRestaurantInfo(area, distance, diet) {
 
   const params = {
     location: area,
-    category: diet,
+    categories: diet,
     radius: distanceMeters,
   };
   // console.log(params);
@@ -83,10 +89,18 @@ function fetchRestaurantInfo(area, distance, diet) {
       if (!response.ok) {
         throw new Error(response.statusText);
       }
+      // STORE.push(response);
       return response.json();
     })
     .then(data => {
-      STORE.push(data);
+      console.log(data);
+      sachaSTORE = data.businesses; 
+      // ^^^^^^^^^^^^^^^^^^^^^^^^^^
+      // we don't push data to the pre-existing STORE array... we replace entire value of STORE 
+      // (ergo, 'let' STORE instead of 'const' STORE)
+      
+      // STORE.push(data);
+      // console.log(STORE);
       renderSearchResults(data);
     })
     .catch(err => console.log(err));
@@ -145,21 +159,63 @@ function generateSearchResults(data) {
   return array.join('');
 }
 
+function generateSearchCriteria(data) {
+
+  return `
+  <div>
+    <input type="checkbox" id="gluten-free-check" name="gluten-free" value="gluten-free">
+    <label for="gluten-free">Gluten-Free</label>
+  </div>
+  <div>
+    <input type="checkbox" id="vegan-check" name="vegan" value="vegan">
+    <label for="vegan">Vegan</label>
+  </div>
+  <div>
+    <input type="checkbox" id="vegetarian-check" name="vegetarian" value="vegetarian">
+    <label for="vegetarian">Vegetarian</label>
+  </div>
+  `;
+}
 
 
 // RENDERING FUNCTIONS ///////////////////////////////////////
 
 function renderSearchResults(data) {
-  console.log(`renderSearchResults() invoked...`);
+  // console.log(`renderSearchResults() invoked...`);
   const results = generateSearchResults(data);
-  console.log(results);
+  // console.log(results);
   $('.results-list').html(results);
   displayView('results');
+}
+
+function renderSearchCriteria(diet) {
+  const checkboxesChecked = generateSearchCriteria(diet);
+  $('.filter-by-diet').html(checkboxesChecked);
 }
 
 
 
 // EVENT HANDLERS ////////////////////////////////////////////
+
+function handleSort() {
+  // TEMP: to test not getting value from sort dropdown
+  // just detecting change/using dropdown 
+  // and hardcoding a sort by 'name'
+  $('select').on('change', event => {
+    sachaSTORE.sort( (a,b) => {
+      if(a.name > b.name) {
+        return 1;
+      }
+      if (b.name > a.name) {
+        return -1;
+      } 
+      return 0;
+    });
+    console.log(sachaSTORE);
+  });
+
+}
+
 
 function handleSubmission() {
   console.log(`handleSubmission init`);
@@ -168,25 +224,21 @@ function handleSubmission() {
     event.preventDefault();
     const area = $('.area-input').val();
     const distance = $('.distance-input').val();
-
-    // ** REFACTOR **
-    // having difficulty getting values of checked checkbox inputs
-    // so for now hard-coding value so I can proceed with fetch
-    
-    
     const diet = [];
     if ($('#gluten-free-check').is(':checked')) {
-      diet.push('gluten-free');
+      diet.push('gluten_free');
+      $('.view-results').find('#gluten-free-check').attr('checked', true);
     } 
     if ($('#vegan-check').is(':checked')) {
       diet.push('vegan');
+      $('.view-results').find('#vegan-check').attr('checked', true);
     } 
     if ($('#vegetarian-check').is(':checked')) {
       diet.push('vegetarian');
+      $('.view-results').find('#vegetarian-check').attr('checked', true);
     } 
-    // const diet = 'vegan';
 
-    console.log(area, distance, diet);
+    // console.log(area, distance, diet);
     fetchRestaurantInfo(area, distance, diet);
   });
 
