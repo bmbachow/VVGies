@@ -12,6 +12,7 @@
 // INIT
 function init() {
   handleSubmission();
+  handleSort();
 }
 
 $(() => {
@@ -20,6 +21,11 @@ $(() => {
 
 
 // MISCELLANEOUS /////////////////////////////////////////////
+
+function sortSearchResults() {
+  // resorting order of objects in sachaSTORE array
+  // first instance: sort alphabetically by data.businesses[i].name
+}
 
 function displayView(view) {
   if (view === 'results') {
@@ -82,7 +88,12 @@ function fetchRestaurantInfo(area, distance, diet) {
       return response.json();
     })
     .then(data => {
-      // console.log(data);
+      console.log(data);
+      sachaSTORE = data.businesses; 
+      // ^^^^^^^^^^^^^^^^^^^^^^^^^^
+      // we don't push data to the pre-existing STORE array... we replace entire value of STORE 
+      // (ergo, 'let' STORE instead of 'const' STORE)
+      
       // STORE.push(data);
       // console.log(STORE);
       renderSearchResults(data);
@@ -170,6 +181,26 @@ function renderSearchCriteria(diet) {
 
 
 // EVENT HANDLERS ////////////////////////////////////////////
+
+function handleSort() {
+  // TEMP: to test not getting value from sort dropdown
+  // just detecting change/using dropdown 
+  // and hardcoding a sort by 'name'
+  $('select').on('change', event => {
+    sachaSTORE.sort( (a,b) => {
+      if(a.name > b.name) {
+        return 1;
+      }
+      if (b.name > a.name) {
+        return -1;
+      } 
+      return 0;
+    });
+    console.log(sachaSTORE);
+  });
+
+}
+
 
 function handleSubmission() {
   console.log(`handleSubmission init`);
