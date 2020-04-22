@@ -1,7 +1,9 @@
+'use strict';
+
 const STORE = [];
 
 function generateLocalStore(data){
-  return JSON.parse(data);
+  // return JSON.parse(data);
 }
 
 console.log(generateLocalStore({ "bookname ":"VB BLACK BOOK", "price":500 }));

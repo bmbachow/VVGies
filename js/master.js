@@ -81,7 +81,7 @@ function fetchRestaurantInfo(area, distance, diet) {
       return response.json();
     })
     .then(data => {
-      console.log(data);
+      // console.log(data);
       STORE.push(data);
       console.log(STORE);
       renderSearchResults(data);
