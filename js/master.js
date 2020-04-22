@@ -78,6 +78,7 @@ function fetchRestaurantInfo(area, distance, diet) {
       if (!response.ok) {
         throw new Error(response.statusText);
       }
+      STORE.push(response);
       return response.json();
     })
     .then(data => {
