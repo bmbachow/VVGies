@@ -152,56 +152,40 @@ function renderSearchResults(data) {
 function handleSubmission() {
   $('.search-form').on('submit', event => {
     event.preventDefault();
-    const area = $('.area-input').val();
-    $('.view-results').find('.area-input').val(area);
-    const distance = $('.distance-input').val();
     const sort = $('.sort-type').val();
-    // console.log(sort);
-    const diet = [];
-    if ($('#gluten-free-check').is(':checked')) {
-      diet.push('gluten_free');
-      $('.view-results').find('#gluten-free-check').attr('checked', true);
-    } 
-    if ($('#vegan-check').is(':checked')) {
-      diet.push('vegan');
-      $('.view-results').find('#vegan-check').attr('checked', true);
-    } 
-    if ($('#vegetarian-check').is(':checked')) {
-      diet.push('vegetarian');
-      $('.view-results').find('#vegetarian-check').attr('checked', true);
-    } 
-    fetchRestaurantInfo(area, distance, diet, sort);
+    handleInputs(sort);
   });
 }
 
-// ** REFACTOR **
-// as this fn is nearly identical to handleSubmission fn
-// (with just different event listeners)
-// should refactor so it's more efficient between
-// the two fn without duplication of code
 function handleSort() {
   $('.sort-type').on('change', event => {
     const sort = $(event.target).val();
-    // console.log($(event.target).val());
-    const area = $('.area-input').val();
-    const distance = $('.distance-input').val();
-    const diet = [];
-    if ($('#gluten-free-check').is(':checked')) {
-      diet.push('gluten_free');
-      $('.view-results').find('#gluten-free-check').attr('checked', true);
-    } 
-    if ($('#vegan-check').is(':checked')) {
-      diet.push('vegan');
-      $('.view-results').find('#vegan-check').attr('checked', true);
-    } 
-    if ($('#vegetarian-check').is(':checked')) {
-      diet.push('vegetarian');
-      $('.view-results').find('#vegetarian-check').attr('checked', true);
-    } 
-    $('.please-wait').text('Please wait while we re-sort the results...');
-    fetchRestaurantInfo(area, distance, diet, sort);
+    handleInputs(sort);
   });
-} 
+}
+
+function handleInputs(sort) {
+  const area = $('.area-input').val();
+  $('.view-results').find('.area-input').val(area);
+  const distance = $('.distance-input').val();
+  // const sort = $('.sort-type').val();
+  // console.log(sort);
+  const diet = [];
+  if ($('#gluten-free-check').is(':checked')) {
+    diet.push('gluten_free');
+    $('.view-results').find('#gluten-free-check').attr('checked', true);
+  } 
+  if ($('#vegan-check').is(':checked')) {
+    diet.push('vegan');
+    $('.view-results').find('#vegan-check').attr('checked', true);
+  } 
+  if ($('#vegetarian-check').is(':checked')) {
+    diet.push('vegetarian');
+    $('.view-results').find('#vegetarian-check').attr('checked', true);
+  } 
+  $('.please-wait').text('Please wait while we re-sort the results...');
+  fetchRestaurantInfo(area, distance, diet, sort);
+}
 
 
 
