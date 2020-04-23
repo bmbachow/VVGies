@@ -46,7 +46,7 @@ function fetchRestaurantInfo(area, distance, diet, criteria = 'best_match') {
 
   // get get past the CORS issue
   // bypass with a proxy
-  const proxyBypassURL = 'http://galvanize-cors.herokuapp.com/'; 
+  const proxyBypassURL = 'https://galvanize-cors.herokuapp.com/'; 
 
   const options = {
     headers: new Headers({
