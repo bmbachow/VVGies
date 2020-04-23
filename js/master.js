@@ -16,20 +16,23 @@ function init() {
   handleSort();
  }
 
-$(() => {
-  console.log('jQuery working', $);
-});
+// $(() => {
+//   console.log('jQuery working', $);
+// });
 
 
 // MISCELLANEOUS /////////////////////////////////////////////
 
 function displayView(view) {
   if (view === 'results') {
-    $('.display-container-results-view').removeClass('hidden');
-    $('.display-container-root-view').addClass('hidden');
+    $('.view-results').removeClass('hidden');
+    $('.branding').removeClass('hidden');
+    $('.sortbar').removeClass('hidden');
+    $('main').removeClass('mode-root');
+    $('.view-root').addClass('hidden');
   } else {
-    $('.display-container-results-view').addClass('hidden');
-    $('.display-container-root-view').removeClass('hidden');
+    $('.view-results').addClass('hidden');
+    $('.view-results').removeClass('hidden');
   }
 }
 
@@ -140,7 +143,7 @@ function generateSearchResults(data) {
 
 function renderSearchResults(data) {
   const results = generateSearchResults(data);
-  $('.results-list').html(results);
+  $('.js-results-list').html(results);
   displayView('results');
   
 }
@@ -154,6 +157,8 @@ function handleSubmission() {
     event.preventDefault();
     const sort = $('.sort-type').val();
     handleInputs(sort);
+    $('.js-results-list').empty();
+    $('.sortbar').addClass('hidden');
   });
 }
 
@@ -161,6 +166,7 @@ function handleSort() {
   $('.sort-type').on('change', event => {
     const sort = $(event.target).val();
     handleInputs(sort);
+    $('.please-wait').text('Please wait while we re-sort the results...');
   });
 }
 
@@ -184,7 +190,7 @@ function handleInputs(sort) {
     diet.push('vegetarian');
     $('.view-results').find('#vegetarian-check').attr('checked', true);
   } 
-  $('.please-wait').text('Please wait while we re-sort the results...');
+  
   fetchRestaurantInfo(area, distance, diet, sort);
 }
 

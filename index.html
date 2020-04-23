@@ -12,7 +12,7 @@
 </head>
 <body>
   
-  <main>
+  <main class="mode-root">
 
     <header class="branding hidden">[Branding?]</header>
     
@@ -21,7 +21,7 @@
       <form class="search-form"> 
         <div class="area">
           <label for="area">Area</label>
-          <input type="text" class="area-input" name="area" placeholder="work in progress" required>
+          <input type="text" class="area-input" name="area" placeholder="Enter city or zipcode..." required>
           <button type="submit">Submit</button>
         </div>
 
@@ -50,70 +50,26 @@
           <label for="vegetarian">Vegetarian</label>
         </div>
       </div> 
+
+      <div class="sortbar hidden">
+        <label for="sort-type">Sorted by: </label>
+        <select name="sort-type" class="sort-type">
+          <option value="best_match" selected>Best Match</option>
+          <option value="rating">Overall Rating</option>
+          <option value="review_count">Review Count</option>
+          <option value="distance">Distance</option>
+        </select> 
+        <p class="please-wait"></p>
+      </div>
       
     </nav>
 
-    <!-- best_match, rating, review_count or distance -->
+    <section class="view-root"></section>
 
-
-    <div class="sortbar">
-      <label for="sort-type">Sorted by: </label>
-      <select name="sort-type" class="sort-type">
-        <option value="best_match" selected>Best Match</option>
-        <option value="rating">Overall Rating</option>
-        <option value="review_count">Review Count</option>
-        <option value="distance">Distance</option>
-      </select> 
-      <p class="please-wait"></p>
-    </div>
-
-    <!-- VIEW 1: ROOT VIEW (init search) ////////////////////////////////////////////// -->
-    <div class="display-container-root-view">
-      <section class="view-root"></section>
-    </div>
-
-    
-    <!-- VIEW 2: :RESULTS VIEW ////////////////////////////////////////////// -->
-    <div class="display-container-results-view hidden">
-    <section class="view-results">
-      
-      <ul class="results-list">
-        
-        <li class="restaurant-item">
-          <h2>Shojin</h2>
-          <ul class="food-types"> 
-            <li class="cuisine">Japanese</li>
-            <li class="price">$$</li>
-            <li class="diet">Vegan</li>
-            <li class="diet">Gluten-Free</li> 
-          </ul>
-          <p class="description">Spicy tofu replaces the tuna in the sushi served at this refined vegan Japanese eatery.</p>
-          <address>
-            <p><b>Address:</b> 333 S Alameda St, Los Angeles, CA 90013</p>
-            <p><b>Phone:</b> (213) 617-0305</p>
-            <p><b><a href="http://www.theshojin.com/menu" target="_blank">Menu</a> | <a href="http://www.theshojin.com/" target="_blank">Website</a></b></p>
-          </address>
-
-          <!-- Name, Address, Menu, Phone Number, Website Link, Price Range, Type of Food (e.g. Indian, Japanese, etc), the type of dietary-requirements it meets(gluten-free, vegan, vegetarian). -->
-
-        </li>
-        <li class="restaurant-item"><h2>Restaurant 2</h2></li>
-        <li class="restaurant-item"><h2>Restaurant 3</h2></li>
-        <li class="restaurant-item"><h2>Restaurant 4</h2></li>
-        <li class="restaurant-item"><h2>Restaurant 5</h2></li>
-      </ul>
-
+    <section class="view-results hidden">
+      <ul class="js-results-list"></ul>
       <footer>Made by Brian & Sacha</footer>
-
     </section>
-    </div>
-    
-
-    <!-- VIEW 3: :RESOURCE RESTAURANT VIEW ???? ////////////////////////////////////////////// -->
-    <!-- TBD if needed (for share functionality) -->
-    <!-- <header><h2>:Resource Restaurant View ???</h2></header> -->
-    
-    <!-- <section class="view-per-restaurant"></section> -->
 
   </main>
 
