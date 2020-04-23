@@ -166,12 +166,11 @@ button {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.sortbar p {
-  position: absolute;
-  top: 14px;
-  right: 10px;
-  margin: 0;
-  font-style: italic;
+.please-wait {
+  display: inline-block;
+  margin: 0 0 0 10px;
+  font-weight: bold;
+  /* color: red; */
 }
 
 
