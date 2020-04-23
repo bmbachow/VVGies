@@ -13,51 +13,63 @@
 <body>
   
   <main>
+
+    <header class="branding hidden">[Branding?]</header>
     
+    <nav class="searchbar">
+        
+      <form class="search-form"> 
+        <div class="area">
+          <label for="area">Area</label>
+          <input type="text" class="area-input" name="area" placeholder="work in progress" required>
+          <button type="submit">Submit</button>
+        </div>
+
+        <div class="distance">
+          <label for="distance">Distance</label>
+          <select name="distance" class="distance-input">
+              <option value="2">2 miles</option>
+              <option value="5">5 miles</option>
+              <option value="10">10 miles</option>
+              <option value="25">25 miles</option>
+          </select> 
+        </div>
+      </form>
+
+      <div class="filter-by-diet">
+        <div>
+          <input type="checkbox" id="gluten-free-check" name="gluten-free" value="gluten-free">
+          <label for="gluten-free">Gluten-Free</label>
+        </div>
+        <div>
+          <input type="checkbox" id="vegan-check" name="vegan" value="vegan">
+          <label for="vegan">Vegan</label>
+        </div>
+        <div>
+          <input type="checkbox" id="vegetarian-check" name="vegetarian" value="vegetarian">
+          <label for="vegetarian">Vegetarian</label>
+        </div>
+      </div> 
+      
+    </nav>
+
+    <!-- best_match, rating, review_count or distance -->
+
+
+    <div class="sortbar">
+      <label for="sort-type">Sorted by: </label>
+      <select name="sort-type" class="sort-type">
+        <option value="best_match" selected>Best Match</option>
+        <option value="rating">Overall Rating</option>
+        <option value="review_count">Review Count</option>
+        <option value="distance">Distance</option>
+      </select> 
+      <p class="please-wait"></p>
+    </div>
+
     <!-- VIEW 1: ROOT VIEW (init search) ////////////////////////////////////////////// -->
     <div class="display-container-root-view">
-    <section class="view-root">
-      
-      <nav class="searchbar">
-      
-        <form class="search-form">
-          <div class="area">
-            <label for="area">Area</label>
-            <input type="text" class="area-input" name="area" placeholder="Neighborhood or zipcode..." required>
-            <button type="submit">Submit</button>
-          </div>
-          
-          <div class="distance">
-            <label for="distance">Distance</label>
-            <select name="distance-input" class="distance-input">
-                <option value="2">2 miles</option>
-                <option value="5">5 miles</option>
-                <option value="10">10 miles</option>
-                <option value="25">25 miles</option>
-            </select> 
-          </div>
-        </form>
-
-        <div class="filter-by-diet">
-          <div>
-            <input type="checkbox" id="gluten-free-check" name="gluten-free" value="gluten-free">
-            <label for="gluten-free">Gluten-Free</label>
-          </div>
-          <div>
-            <input type="checkbox" id="vegan-check" name="vegan" value="vegan">
-            <label for="vegan">Vegan</label>
-          </div>
-          <div>
-            <input type="checkbox" id="vegetarian-check" name="vegetarian" value="vegetarian">
-            <label for="vegetarian">Vegetarian</label>
-          </div>
-        </div> 
-
-      </nav>
-
-      <footer>Made by Brian & Sacha</footer>
-
-    </section>
+      <section class="view-root"></section>
     </div>
 
     
@@ -65,59 +77,6 @@
     <div class="display-container-results-view hidden">
     <section class="view-results">
       
-      <header class="branding">[Branding?]</header>
-      
-      <nav class="searchbar">
-        
-        <form class="search-form"> 
-          <div class="area">
-            <label for="area">Area</label>
-            <input type="text" class="area-input" name="area" placeholder="work in progress" required>
-            <button type="submit">Submit</button>
-          </div>
-  
-          <div class="distance">
-            <label for="distance">Distance</label>
-            <select name="distance" class="distance-input">
-                <option>2 miles</option>
-                <option>5 miles</option>
-                <option>10 miles</option>
-                <option>25 miles</option>
-            </select> 
-          </div>
-        </form>
-
-        <div class="filter-by-diet">
-          <div>
-            <input type="checkbox" id="gluten-free-check" name="gluten-free" value="gluten-free">
-            <label for="gluten-free">Gluten-Free</label>
-          </div>
-          <div>
-            <input type="checkbox" id="vegan-check" name="vegan" value="vegan">
-            <label for="vegan">Vegan</label>
-          </div>
-          <div>
-            <input type="checkbox" id="vegetarian-check" name="vegetarian" value="vegetarian">
-            <label for="vegetarian">Vegetarian</label>
-          </div>
-        </div> 
-        
-      </nav>
-
-      <!-- best_match, rating, review_count or distance -->
-
-
-      <div class="sortbar">
-        <label for="sort-type">Sorted by: </label>
-        <select name="sort-type" class="sort-type">
-          <option value="best_match" selected>Best Match</option>
-          <option value="rating">Overall Rating</option>
-          <option value="review_count">Review Count</option>
-          <option value="distance">Distance</option>
-        </select> 
-        <p class="please-wait"></p>
-      </div>
-
       <ul class="results-list">
         
         <li class="restaurant-item">

@@ -168,6 +168,7 @@ function handleInputs(sort) {
   const area = $('.area-input').val();
   $('.view-results').find('.area-input').val(area);
   const distance = $('.distance-input').val();
+  console.log(`distance: ${distance}`);
   // const sort = $('.sort-type').val();
   // console.log(sort);
   const diet = [];
