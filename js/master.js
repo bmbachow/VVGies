@@ -10,8 +10,6 @@
 //////////////////////////////////////////////////////////////
 
 
-
-// const STORE = [];
 // INIT
 function init() {
   handleSubmission();
@@ -23,11 +21,6 @@ $(() => {
 
 
 // MISCELLANEOUS /////////////////////////////////////////////
-
-// function sortSearchResults() {
-//   // resorting order of objects in sachaSTORE array
-//   // first instance: sort alphabetically by data.businesses[i].name
-// }
 
 function displayView(view) {
   if (view === 'results') {
@@ -85,45 +78,25 @@ function fetchRestaurantInfo(area, distance, diet, criteria = 'best_match') {
 
 
 
-  fetch(url, options) // disabled due to CORS
-    // fetch(url)
+  fetch(url, options)
     .then(response => {
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-      // STORE.push(response);
       return response.json();
     })
     .then(data => {
       console.log(data);
-      // sachaSTORE = data.businesses; 
-      // ^^^^^^^^^^^^^^^^^^^^^^^^^^
-      // we don't push data to the pre-existing STORE array... we replace entire value of STORE 
-      // (ergo, 'let' STORE instead of 'const' STORE)
-      
-      // STORE.push(data);
-      // console.log(STORE);
       renderSearchResults(data);
     })
     .catch(err => console.log(err));
   }  
 
-// function generateLocalStore(STORE){
-//   JSON.parse(STORE);
-//   return STORE;
-// }
-
-// console.log(STORE);
-    
-    
-       
-
   // {{ FURTHER v2 ITERATION }}
   // pass the Yelp restaurant address data to Google Maps Geocode API
   // fetchMapData(addresses)
   // {{ ... will Function Stub / Psuedocode later }}
-
-
+}
 
 
 // TEMPLATE GENERATORS ///////////////////////////////////////
@@ -183,9 +156,7 @@ function generateSearchCriteria(data) {
 // RENDERING FUNCTIONS ///////////////////////////////////////
 
 function renderSearchResults(data) {
-  // console.log(`renderSearchResults() invoked...`);
   const results = generateSearchResults(data);
-  // console.log(results);
   $('.results-list').html(results);
   displayView('results');
   
@@ -200,29 +171,7 @@ function renderSearchCriteria(diet) {
 
 // EVENT HANDLERS ////////////////////////////////////////////
 
-// function handleSort() {
-//   // TEMP: to test not getting value from sort dropdown
-//   // just detecting change/using dropdown 
-//   // and hardcoding a sort by 'name'
-//   $('select').on('change', event => {
-//     sachaSTORE.sort( (a,b) => {
-//       if(a.name > b.name) {
-//         return 1;
-//       }
-//       if (b.name > a.name) {
-//         return -1;
-//       } 
-//       return 0;
-//     });
-//     console.log(sachaSTORE);
-//   });
-
-// }
-
-
 function handleSubmission() {
-  console.log(`handleSubmission init`);
-  // on submit get values from inputs (area, distance, diet)
   $('.search-form').on('submit', event => {
     event.preventDefault();
     const area = $('.area-input').val();
@@ -242,15 +191,8 @@ function handleSubmission() {
       diet.push('vegetarian');
       $('.view-results').find('#vegetarian-check').attr('checked', true);
     } 
-    // console.log(area, distance, diet);
     fetchRestaurantInfo(area, distance, diet, criteria);
   });
-
-  // toggle which view to display 
-  // (root or results?)
-  // but invoke later in different fn... 
-  // likely fn fetch() .then(data) else fn render()
-  // displayView(view); 
 }
 
 
