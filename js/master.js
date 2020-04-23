@@ -96,7 +96,7 @@ function fetchRestaurantInfo(area, distance, diet, criteria = 'best_match') {
   // pass the Yelp restaurant address data to Google Maps Geocode API
   // fetchMapData(addresses)
   // {{ ... will Function Stub / Psuedocode later }}
-}
+
 
 
 // TEMPLATE GENERATORS ///////////////////////////////////////
@@ -134,23 +134,6 @@ function generateSearchResults(data) {
   return array.join('');
 }
 
-function generateSearchCriteria(data) {
-
-  return `
-  <div>
-    <input type="checkbox" id="gluten-free-check" name="gluten-free" value="gluten-free">
-    <label for="gluten-free">Gluten-Free</label>
-  </div>
-  <div>
-    <input type="checkbox" id="vegan-check" name="vegan" value="vegan">
-    <label for="vegan">Vegan</label>
-  </div>
-  <div>
-    <input type="checkbox" id="vegetarian-check" name="vegetarian" value="vegetarian">
-    <label for="vegetarian">Vegetarian</label>
-  </div>
-  `;
-}
 
 
 // RENDERING FUNCTIONS ///////////////////////////////////////
@@ -160,11 +143,6 @@ function renderSearchResults(data) {
   $('.results-list').html(results);
   displayView('results');
   
-}
-
-function renderSearchCriteria(diet) {
-  const checkboxesChecked = generateSearchCriteria(diet);
-  $('.filter-by-diet').html(checkboxesChecked);
 }
 
 
