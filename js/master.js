@@ -131,6 +131,7 @@ function fetchRestaurantInfo(area, distance, diet, criteria = 'best_match') {
 function generateSearchResults(data) {
   const array = [];
   const arrCategories = [];
+  
 
   for (let i = 0; i < data.businesses.length; i++) {
     for (let j = 0; j < data.businesses[i].categories.length; j++) {
@@ -187,6 +188,7 @@ function renderSearchResults(data) {
   // console.log(results);
   $('.results-list').html(results);
   displayView('results');
+  
 }
 
 function renderSearchCriteria(diet) {
@@ -240,7 +242,6 @@ function handleSubmission() {
       diet.push('vegetarian');
       $('.view-results').find('#vegetarian-check').attr('checked', true);
     } 
-
     // console.log(area, distance, diet);
     fetchRestaurantInfo(area, distance, diet, criteria);
   });
