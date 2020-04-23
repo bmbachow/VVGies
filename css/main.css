@@ -1,5 +1,11 @@
 /* MOBILE FIRST! */
 
+/* NOTE: 
+GONNA HAVE TO REPLACE ALL MY 
+RELATIVE + ABSOLUTE POSITIONING OF ELEMENTS
+WITH FLEXBOX CAUSE FORMAT BREAKS AT SO MANY BREAKPOINTS.
+*/
+
 * {
   box-sizing: border-box;
   /* border: 1px solid red; */
@@ -19,22 +25,6 @@ body {
   
 }
 
-main {
-  /* margin-right: auto;
-  margin-left: auto; */
-  /* max-width: 1080px; */
-  /* display: flexbox;
-  justify-content: center; */
-}
-
-section { 
-  /* border: 1px solid black; */
-  /* max-width: 1080px;
-  min-height: 750px; */
-
-  /* background-color: white; */
-  /* padding: 0 10px 0 10px; */
-}
 
 .branding {
   border: 1px solid black;
@@ -47,7 +37,7 @@ section {
 footer {
   border: 1px solid black;
   padding: 10px;
-  margin-top: 100px;
+  margin-top: 20px;
   font-size: 0.8rem;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
@@ -58,7 +48,7 @@ footer {
 /*/ SEARCHBAR ////////////////////////////////////////*/
 
 nav {
-  /* position: relative; */
+  position: relative;
   border: 1px solid black;
   padding: 10px;
   margin: 10px;
@@ -116,53 +106,34 @@ button {
 
 .view-root {
   background-color: rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   height: 100%;
   
 }
 
-.view-root nav {
-
+main.mode-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* no effect?!?! =/ */
+  align-items: center;
+  height: 600px;
+  margin: 10px;
 }
 
-/* .view-root {
-  position: relative;
+.mode-root .searchbar { /* see: RD */
+  /* align-self: center; */
   width: 100%;
-  height: 100%;
-} */
-
-/* .view-root .searchbar {
-  width: 300px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
-
-.view-root .filter-by-diet{
-  color: white;
-}
-
-.view-root footer {
-  position: absolute;
-  width: 95%;
-  bottom: 5px;
-} */
 
 
 /*/ SORTBAR ////////////////////////////////////////*/
 
-.sortbar {
-  position: relative;
+.sortbar { /* see: RD */
+  position: absolute;
   border: 1px solid black;
   padding: 10px;
-  margin: 10px;
-  /* margin-top: 10px;
-  margin-right: auto;
-  margin-left: auto; */
+  top: 180px;
+  left: 0;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
@@ -177,7 +148,14 @@ button {
 
 /*/ RESULTS ////////////////////////////////////////*/
 
-ul {
+.view-results { /* see: RD */
+  position: absolute;
+  top: 280px;
+  left: 0;
+  width: 100%;
+}
+
+ul { 
   padding: 0 10px 0 10px;
   list-style: none;
 }
@@ -243,25 +221,28 @@ a:hover {
 /* 480 /////////////////////////////////////*/
 @media screen and (min-width: 680px) {
 
-  /*/ MODIFICATIONS FOR ROOT VIEW /////////////////////*/
-
-
-  main .view-root {
-    background-color: rgba(0, 0, 0, 0.3);
+  .mode-root .searchbar { /* see: RD */
+    /* align-self: center; */
+    width: 500px;
   }
 
-  .view-root {
-    /* position: relative; */
-    /* width: 100%; */
+  .sortbar { /* see: RD */
+    /* position: absolute;
+    border: 1px solid black;
+    padding: 10px; */
+    top: 140px;
+    left: 0;
+    /* width: 100%;
+    background-color: rgba(0, 0, 0, 0.3); */
   }
 
-  /* .view-root .searchbar {
-    width: 600px;
+  .view-results { /* see: RD */
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  } */
+    top: 240px;
+    left: 0;
+    width: 100%;
+  }
+
 }
 
 
