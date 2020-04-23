@@ -153,6 +153,7 @@ function handleSubmission() {
   $('.search-form').on('submit', event => {
     event.preventDefault();
     const area = $('.area-input').val();
+    $('.view-results').find('.area-input').val(area);
     const distance = $('.distance-input').val();
     const criteria = $('.search-criteria').val();
     console.log(criteria);
