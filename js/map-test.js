@@ -1,4 +1,7 @@
+/* eslint-disable indent */
 'use strict';
+
+
 // src: https://leafletjs.com/examples/quick-start/
 
 
@@ -84,5 +87,29 @@ polygon.bindPopup("I am a polygon.");
 
 
 
-//
-console.log(mymap);
+
+//////////////////////////////////////////////////////////////////////////////////////
+// DEALING WITH EVENTS ///////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+
+// Every time something happens in Leaflet, e.g. user clicks on a marker or map zoom changes, the corresponding object sends an event which you can subscribe to with a function. It allows you to react to user interaction:
+
+var popup = L.popup();
+
+function onMapClick(e) {
+  popup
+    .setLatLng(e.latlng)
+    .setContent("You clicked the map at " + e.latlng.toString())
+    .openOn(mymap);
+}
+
+mymap.on('click', onMapClick);
+
+
+
+
+
+
+
+
+
