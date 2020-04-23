@@ -104,13 +104,16 @@
         
       </nav>
 
+      <!-- best_match, rating, review_count or distance -->
+
+
       <div class="sortbar">
         <label for="criteria">Sorted by: </label>
-        <select name="criteria">
-          <option>Best Match</option>
-          <option>Overall Rating</option>
-          <option>Price Range</option>
-          <option>Alphabetically</option>
+        <select name="criteria" class="search-criteria">
+          <option value="best_match" selected>Best Match</option>
+          <option value="rating">Overall Rating</option>
+          <option value="review_count">Review Count</option>
+          <option value="distance">Distance</option>
         </select> 
         <p><b>120</b> restaurants found</p>
       </div>

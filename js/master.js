@@ -11,24 +11,23 @@
 
 
 
-const STORE = [];
+// const STORE = [];
 // INIT
 function init() {
   handleSubmission();
-  handleSort();
-}
+ }
 
 $(() => {
-  console.log("jQuery working", $);
+  console.log('jQuery working', $);
 });
 
 
 // MISCELLANEOUS /////////////////////////////////////////////
 
-function sortSearchResults() {
-  // resorting order of objects in sachaSTORE array
-  // first instance: sort alphabetically by data.businesses[i].name
-}
+// function sortSearchResults() {
+//   // resorting order of objects in sachaSTORE array
+//   // first instance: sort alphabetically by data.businesses[i].name
+// }
 
 function displayView(view) {
   if (view === 'results') {
@@ -47,7 +46,7 @@ function formatQueryParams(params) {
   return queryItems.join('&');
 }
 
-function fetchRestaurantInfo(area, distance, diet) {
+function fetchRestaurantInfo(area, distance, diet, criteria = 'best_match') {
  
   const baseURL = 'https://api.yelp.com/v3/businesses/search';
   const apiKey = 'IGnYDkKpA5hFg8el7-9WyyoLx5Z5sv2nssKYPflu_KGq26puqqFYSR9vikWHbTeSt9Vm1xzlQYKjzvf7uoJrkNTNfGdgJ5S7H3OW_CXlTJChkm-HxwgWNFnx-fOZXnYx';
@@ -74,7 +73,10 @@ function fetchRestaurantInfo(area, distance, diet) {
     location: area,
     categories: diet,
     radius: distanceMeters,
+    sort_by: criteria
   };
+
+  // add sorting
   // console.log(params);
 
   const queryString = formatQueryParams(params);
@@ -94,7 +96,7 @@ function fetchRestaurantInfo(area, distance, diet) {
     })
     .then(data => {
       console.log(data);
-      sachaSTORE = data.businesses; 
+      // sachaSTORE = data.businesses; 
       // ^^^^^^^^^^^^^^^^^^^^^^^^^^
       // we don't push data to the pre-existing STORE array... we replace entire value of STORE 
       // (ergo, 'let' STORE instead of 'const' STORE)
@@ -106,12 +108,12 @@ function fetchRestaurantInfo(area, distance, diet) {
     .catch(err => console.log(err));
   }  
 
-function generateLocalStore(STORE){
-  JSON.parse(STORE);
-  return STORE;
-}
+// function generateLocalStore(STORE){
+//   JSON.parse(STORE);
+//   return STORE;
+// }
 
-console.log(STORE);
+// console.log(STORE);
     
     
        
@@ -131,7 +133,6 @@ function generateSearchResults(data) {
   const arrCategories = [];
 
   for (let i = 0; i < data.businesses.length; i++) {
-
     for (let j = 0; j < data.businesses[i].categories.length; j++) {
       arrCategories.push(`
         <li class="cuisine">${data.businesses[i].categories[j].title}</li>
@@ -197,24 +198,24 @@ function renderSearchCriteria(diet) {
 
 // EVENT HANDLERS ////////////////////////////////////////////
 
-function handleSort() {
-  // TEMP: to test not getting value from sort dropdown
-  // just detecting change/using dropdown 
-  // and hardcoding a sort by 'name'
-  $('select').on('change', event => {
-    sachaSTORE.sort( (a,b) => {
-      if(a.name > b.name) {
-        return 1;
-      }
-      if (b.name > a.name) {
-        return -1;
-      } 
-      return 0;
-    });
-    console.log(sachaSTORE);
-  });
+// function handleSort() {
+//   // TEMP: to test not getting value from sort dropdown
+//   // just detecting change/using dropdown 
+//   // and hardcoding a sort by 'name'
+//   $('select').on('change', event => {
+//     sachaSTORE.sort( (a,b) => {
+//       if(a.name > b.name) {
+//         return 1;
+//       }
+//       if (b.name > a.name) {
+//         return -1;
+//       } 
+//       return 0;
+//     });
+//     console.log(sachaSTORE);
+//   });
 
-}
+// }
 
 
 function handleSubmission() {
@@ -224,6 +225,8 @@ function handleSubmission() {
     event.preventDefault();
     const area = $('.area-input').val();
     const distance = $('.distance-input').val();
+    const criteria = $('.search-criteria').val();
+    console.log(criteria);
     const diet = [];
     if ($('#gluten-free-check').is(':checked')) {
       diet.push('gluten_free');
@@ -239,7 +242,7 @@ function handleSubmission() {
     } 
 
     // console.log(area, distance, diet);
-    fetchRestaurantInfo(area, distance, diet);
+    fetchRestaurantInfo(area, distance, diet, criteria);
   });
 
   // toggle which view to display 
