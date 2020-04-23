@@ -16,6 +16,14 @@ WITH FLEXBOX CAUSE FORMAT BREAKS AT SO MANY BREAKPOINTS.
 }
 
 
+
+/*/ LEAFLET //////////////////////////////////////////*/
+
+#mapid { 
+  height: 600px; 
+}
+
+
 /*/ UNIVERSAL ////////////////////////////////////////*/
 
 body {
