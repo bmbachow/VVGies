@@ -4,9 +4,6 @@
 //////////////////////////////////////////////////////////////
 // SEPARATION OF CONCERNS: TYPES OF FUNCTIONS
 //
-// Leaflet Map API shizzness:
-//
-// Yelp API shizzness:
 // Miscellaneous (incl Fetch Request)
 // Template Generators
 // Rendering Functions
@@ -24,40 +21,6 @@ function init() {
 //   console.log('jQuery working', $);
 // });
 
-
-
-//////////////////////////////////////////////////////////////
-// LEAFLET MAP API SHIZZNESS /////////////////////////////////
-//////////////////////////////////////////////////////////////
-
-// [1] initialise map 
-// [2] setView(geographical coordinates [lat, long], zoomlevel)
-// setView() also returns the map object
-// var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-
-
-// [3] add a (mapbox) 'tile layer' to add to our map 
-// L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-//   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-//   maxZoom: 18,
-//   id: 'mapbox/streets-v11', // mapbox/satellite-v9 // mapbox/streets-v11 
-//   tileSize: 512,
-//   zoomOffset: -1,
-//   // mapbox.access.token
-//   accessToken: 'pk.eyJ1IjoiYXJ0aWZpY2lhbGFyZWEiLCJhIjoiY2s5ZGFyYmo2MDFyejNmbGVsOGQ3eWZ5cCJ9.TIWmboj0G4JnLfQ0GhTDdw' 
-// }).addTo(mymap);
-
-
-// [4a] add a marker
-// var marker = L.marker([51.5, -0.09]).addTo(mymap);
-
-
-
-
-
-//////////////////////////////////////////////////////////////
-// YELP API SHIZZNESS ////////////////////////////////////////
-//////////////////////////////////////////////////////////////
 
 // MISCELLANEOUS /////////////////////////////////////////////
 
