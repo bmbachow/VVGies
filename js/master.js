@@ -132,17 +132,61 @@ function fetchRestaurantInfo(area, distance, diet, sort = 'best_match') {
     .then(data => {
       console.log(data);
       renderSearchResults(data);
-      // fetchMapData(addresses)
-      renderMap(); // currently with bogus data
+      fetchGeocode(data); 
+      // renderMap(); // currently with bogus data
       $('.please-wait').text('');
     })
     .catch(err => console.log(err));
   }  
 
-  // {{ FURTHER v2 ITERATION }}
-  // pass the Yelp restaurant address data to Google Maps Geocode API
-  // fetchMapData(addresses)
-  // {{ ... will Function Stub / Psuedocode later }}
+
+function fetchGeocode(data) {
+  // how do I get multiple lat/lng at the same time?
+  // can I chain it thru the params in one URL?
+  // else multiple calls in a for loop?
+
+  const baseURL = 'https://maps.googleapis.com/maps/api/geocode/json?';
+  const apiKey = 'AIzaSyBN2R4SyxDVgxSicynY7L44gvqBrfWzHpI';
+
+  // get get past the CORS issue
+  // bypass with a proxy
+  const proxyBypassURL = 'https://galvanize-cors.herokuapp.com/'; 
+
+  const options = {
+    headers: new Headers({
+      'Authorization': 'Bearer ' + apiKey,
+    })
+  };
+
+  const params = {
+    address: area,
+    key: apiKey
+  };
+
+
+  const queryString = formatQueryParams(params);
+  // const url = proxyBypassURL + baseURL + '?' + queryString;
+  const url = baseURL + '?' + queryString;
+  console.log(url);
+
+  // fetch(url, options)
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+    })
+    .catch(err => console.log(err));  
+    
+  }
+  
+function fetchMap() {
+
+}
 
 
 
