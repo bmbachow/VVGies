@@ -26,7 +26,7 @@ function init() {
 //////////////////////////////////////////////////////////////
 
 function renderMap(data, distance) {
-  // To avoid "Error: Map Container Is Already Initialized" beyond the initial search
+  // To avoid "Error: Map Container Is Already Initialized"
   // destroy map, only to then recreate it ;P
   $('#js-map-container').empty();
   $('#js-map-container').html('<div id="mapid""></div>');
@@ -77,7 +77,6 @@ function renderMap(data, distance) {
       arrCategories.push(`${data.businesses[i].categories[j].title}`);
     }
     let strCategories = arrCategories.join(', ');
-    // console.log(strCategories);
 
     marker.bindPopup(`<b>${data.businesses[i].name}</b><br>${strCategories}`);
   }
@@ -145,7 +144,6 @@ function fetchRestaurantInfo(area, distance, diet, sort = 'best_match') {
 
   const queryString = formatQueryParams(params);
   const url = proxyBypassURL + baseURL + '?' + queryString;
-  // console.log(url);
 
   fetch(url, options)
     .then(response => {
@@ -155,7 +153,6 @@ function fetchRestaurantInfo(area, distance, diet, sort = 'best_match') {
       return response.json();
     })
     .then(data => {
-      // console.log(data);
       renderSearchResults(data);
       renderMap(data, distance); 
       $('.please-wait').text('');
@@ -180,7 +177,7 @@ function generateSearchResults(data) {
       `);
     }
     let strCategories = arrCategories.join('');
-    // console.log(strCategories);
+
     array.push(`<li class="restaurant-item">
     <h2>${data.businesses[i].name}</h2>
     <ul class="food-types"> 
