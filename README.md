@@ -2,7 +2,9 @@
 
 **Brian & Sacha** API Mashup 
 
-**LIVE:** https://artificialarea.github.io/capstone-1/
+**LIVE MVP for REVIEW:** https://artificialarea.github.io/capstone-1/
+
+<hr>
 
 **Leaflet MAP API test:** https://artificialarea.github.io/capstone-1/map-test.html
 
