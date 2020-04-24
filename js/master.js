@@ -31,6 +31,12 @@ function init() {
 //////////////////////////////////////////////////////////////
 
 function renderMap(data) {
+  console.log(`mymap: ${mymap}`);
+  // if(mymap != undefined || map != null) {
+  //   // mymap.off();
+  //   // mymap.remove();
+  //   mymap.invalidateSize();
+  // }
 
   const coordinates = [];
   for (let i = 0; i < data.businesses.length; i++) {
