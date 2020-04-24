@@ -51,11 +51,11 @@ function renderMap(data, distance) {
   if (distance == 2) {
     zoomLevel = 13;
   } else if (distance == 5) {
-    zoomLevel = 12.5;
+    zoomLevel = 12.8;
   } else if (distance == 10) {
-    zoomLevel = 12.4;
+    zoomLevel = 12.6;
   } else if (distance == 25) {
-    zoomLevel = 12.3;
+    zoomLevel = 12.4;
   }
   var mymap = L.map('mapid').setView([coordinates[0][0], coordinates[0][1]], zoomLevel);
 
@@ -71,10 +71,11 @@ function renderMap(data, distance) {
     accessToken: 'pk.eyJ1IjoiYXJ0aWZpY2lhbGFyZWEiLCJhIjoiY2s5ZGFyYmo2MDFyejNmbGVsOGQ3eWZ5cCJ9.TIWmboj0G4JnLfQ0GhTDdw' 
   }).addTo(mymap);
 
-  
+
   // [4] add a marker(s)
   for (let i = 0; i < coordinates.length; i++) {
     var marker = L.marker([coordinates[i][0], coordinates[i][1]]).addTo(mymap);
+    marker.bindPopup(`<b>${data.businesses[i].name}</b>`);
   }
   
 }
