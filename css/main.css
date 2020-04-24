@@ -1,263 +1,44 @@
-/* MOBILE FIRST! */
-
-/* NOTE: 
-GONNA HAVE TO REPLACE ALL MY 
-RELATIVE + ABSOLUTE POSITIONING OF ELEMENTS
-WITH FLEXBOX CAUSE FORMAT BREAKS AT SO MANY BREAKPOINTS.
-*/
-
-* {
-  box-sizing: border-box;
-  /* border: 1px solid red; */
-}
+/* intro page */
 
 .hidden {
   display: none;
 }
 
-
-
-/*/ LEAFLET //////////////////////////////////////////*/
-
-#mapid { 
-  height: 600px; 
-}
-
-
-/*/ UNIVERSAL ////////////////////////////////////////*/
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-  /* background-color: rgb(243, 243, 243); */
-  
-}
-
-
-.branding {
-  border: 1px solid black;
-  padding: 10px;
-  margin: 10px;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-}
-
-footer {
-  border: 1px solid black;
-  padding: 10px;
-  margin-top: 20px;
-  font-size: 0.8rem;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  width: 100%;
-}
-
-
-/*/ SEARCHBAR ////////////////////////////////////////*/
-
-nav {
-  position: relative;
-  border: 1px solid black;
-  padding: 10px;
-  margin: 10px;
-  /* margin-top: 10px;
-  margin-right: auto;
-  margin-left: auto; */
-  background-color: rgba(0, 0, 0, 0.3);
-  max-width: 1080px;
-}
-
-form {
+.mode-root {
   display: flex;
-  justify-content: space-between;
-  flex-flow: wrap;
-  margin-bottom: 20px;
+  justify-content: center;  
 }
 
-form label {
-  display: block;
-  font-size: 0.8rem;
-  padding: 5px;
+.searchbar {
+  flex-basis: 60vw;
+  max-width: 600px;
+  border: 2px solid black;
+  padding: 20px;
+  margin-top: 30vh;
+  flex-wrap: wrap;
 }
 
-input {
-  padding: 10px;
+.search-form {
+  display: flex;
 }
 
 .area {
-  flex-grow:2;
-}
-
-.area-input {
-  width: 60%;
+  
+  flex: 2 1 0;
 }
 
 .distance {
-  flex-grow: 1;
-}
-
-button {
-  height: 45px;
-  padding: 10px;
-  /* margin-top: 20px; */
-}
-
-.filter-by-diet div {
-  display: inline-block;
-  margin-right: 10px;
-  /* position: absolute;
-  top: 15px;
-  right: 20px; */
-}
-
-/*/ MODIFICATIONS FOR ROOT VIEW /////////////////////*/
-
-.view-root {
-  background-color: rgba(0, 0, 0, 0.3);
-  height: 100%;
   
+  flex: 1 1 0;
+} 
+
+.area , .distance {
+  font-size: 20px;
+  margin-bottom: 15px;
 }
 
-main.mode-root {
+.filter-by-diet {
   display: flex;
-  flex-direction: column;
-  justify-content: center; /* no effect?!?! =/ */
-  align-items: center;
-  height: 600px;
-  margin: 10px;
+  justify-content: space-evenly;
 }
 
-.mode-root .searchbar { /* see: RD */
-  /* align-self: center; */
-  width: 100%;
-}
-
-
-/*/ SORTBAR ////////////////////////////////////////*/
-
-.sortbar { /* see: RD */
-  position: absolute;
-  border: 1px solid black;
-  padding: 10px;
-  top: 180px;
-  left: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.please-wait {
-  display: inline-block;
-  margin: 0 0 0 10px;
-  font-weight: bold;
-  /* color: red; */
-}
-
-
-
-/*/ RESULTS ////////////////////////////////////////*/
-
-.view-results { /* see: RD */
-  position: absolute;
-  top: 280px;
-  left: 0;
-  width: 100%;
-}
-
-ul { 
-  padding: 0 10px 0 10px;
-  list-style: none;
-}
-
-.restaurant-item {
-  position: relative;
-  border: 1px solid grey;
-  background-color: rgba(0, 0, 0, 0.1);
-  min-height: 200px;
-  margin-bottom: 20px;
-  vertical-align: middle;
-  padding: 20px;
-}
-
-h2 {
-  margin-top: 0;
-}
-.food-types {
-  list-style: none;
-  padding: 0;
-
-}
-.food-types li {
-  display: inline-block;
-  padding: 5px 10px;
-  border: 2px solid rgb(0, 0, 0, 0.6); 
-  color:  rgb(0, 0, 0, 0.6);
-  font-weight: bold;
-  font-size: 0.7rem
-}
-
-.food-types .cuisine {
-  background-color: black;
-  color: white;
-}
-
-.food-types .price {
-  border: 2px solid rgb(0, 0, 0, 0);
-  /* border: none; */
-  background-color: rgb(0, 0, 0, 0.6);
-  color: white;
-}
-
-address {
-  font-style: normal;
-  font-size: 0.8rem;
-  line-height: 1.4;
-}
-
-a {
-  color: black;
-}
-
-a:hover {
-  background-color: lightskyblue;
-}
-
-
-
-
-
-/* REPONSIVE DESIGN ////////////////////////*/
-/* 480 /////////////////////////////////////*/
-@media screen and (min-width: 680px) {
-
-  .mode-root .searchbar { /* see: RD */
-    /* align-self: center; */
-    width: 500px;
-  }
-
-  .sortbar { /* see: RD */
-    /* position: absolute;
-    border: 1px solid black;
-    padding: 10px; */
-    top: 140px;
-    left: 0;
-    /* width: 100%;
-    background-color: rgba(0, 0, 0, 0.3); */
-  }
-
-  .view-results { /* see: RD */
-    position: absolute;
-    top: 240px;
-    left: 0;
-    width: 100%;
-  }
-
-}
-
-
-
-/* 768 /////////////////////////////////////*/
-@media screen and (min-width: 768px) {}
-/* 1024 /////////////////////////////////////*/
-@media screen and (min-width: 1024px) {}
-/* 1280 /////////////////////////////////////*/
-@media screen and (min-width: 1280px) {}
