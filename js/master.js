@@ -51,7 +51,7 @@ function renderMap(data, distance) {
   } else if (distance == 10) {
     zoomLevel = 12.6;
   } else if (distance == 25) {
-    zoomLevel = 12.4;
+    zoomLevel = 12;
   }
   var mymap = L.map('mapid').setView([coordinates[0][0], coordinates[0][1]], zoomLevel);
 
