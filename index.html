@@ -6,10 +6,12 @@
   <title>API Mashup : MVP</title>
   <!--
 
-    APIs used:
+    APIs used /////////////////////////
+    
+    For Restaurant Search Results:
     [1] Yelp Business Search API: https://www.yelp.com/developers/documentation/v3/business_search
     
-    Hopefully later...
+    For Map Geolocation:
     [2a] Mapbox Streets tile layer from Mapbox Static Tiles API: https://docs.mapbox.com/api/
     [2b] via Leaflet JavaScript library: https://leafletjs.com/
  
@@ -77,12 +79,15 @@
     <section class="view-root"></section>
 
     <section class="view-results hidden">
+      <div id="js-map-container">
+        <!-- element to render leaflet.api -->
+        <div id="mapid" class='hidden'></div>
+      </div>
+
       <ul class="js-results-list"></ul>
+      
       <footer>Made by Brian & Sacha</footer>
     </section>
-
-    <!-- element to render leaflet.api -->
-    <div id="mapid" class='hidden'></div>
 
   </main>
 

@@ -19,8 +19,17 @@ WITH FLEXBOX CAUSE FORMAT BREAKS AT SO MANY BREAKPOINTS.
 
 /*/ LEAFLET //////////////////////////////////////////*/
 
+#js-map-container {
+  margin: 0 10px 0 10px;
+}
+
 #mapid { 
   height: 600px; 
+  width: 100%;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  border: 1px solid black;
 }
 
 

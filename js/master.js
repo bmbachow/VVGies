@@ -4,6 +4,9 @@
 //////////////////////////////////////////////////////////////
 // SEPARATION OF CONCERNS: TYPES OF FUNCTIONS
 //
+// Leaflet Map API Rendering
+//
+// Yelp API shizzness:
 // Miscellaneous (incl Fetch Request)
 // Template Generators
 // Rendering Functions
@@ -17,9 +20,74 @@ function init() {
   handleSort();
  }
 
-// $(() => {
-//   console.log('jQuery working', $);
-// });
+
+//////////////////////////////////////////////////////////////
+// LEAFLET MAP API SHIZZNESS /////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+function renderMap(data, distance) {
+  // To avoid "Error: Map Container Is Already Initialized"
+  // destroy map, only to then recreate it ;P
+  $('#js-map-container').empty();
+  $('#js-map-container').html('<div id="mapid""></div>');
+
+  const coordinates = [];
+  
+  for (let i = 0; i < data.businesses.length; i++) {
+    // push restaurant coordinates to array
+    const latitude = data.businesses[i].coordinates.latitude;
+    const longitude = data.businesses[i].coordinates.longitude;
+    coordinates.push([latitude, longitude]);
+  }
+
+
+  // [1] initialise map 
+  // [2] setView(geographical coordinates [lat, long], zoomlevel)
+  let zoomLevel;
+  if (distance == 2) {
+    zoomLevel = 13;
+  } else if (distance == 5) {
+    zoomLevel = 12.8;
+  } else if (distance == 10) {
+    zoomLevel = 12.6;
+  } else if (distance == 25) {
+    zoomLevel = 12.4;
+  }
+  var mymap = L.map('mapid').setView([coordinates[0][0], coordinates[0][1]], zoomLevel);
+
+
+  // [3] add a (mapbox) 'tile layer' to add to our map 
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11', // mapbox/satellite-v9 // mapbox/streets-v11 
+    tileSize: 512,
+    zoomOffset: -1,
+    // mapbox.access.token
+    accessToken: 'pk.eyJ1IjoiYXJ0aWZpY2lhbGFyZWEiLCJhIjoiY2s5ZGFyYmo2MDFyejNmbGVsOGQ3eWZ5cCJ9.TIWmboj0G4JnLfQ0GhTDdw' 
+  }).addTo(mymap);
+
+
+  // [4] add a marker(s)
+  for (let i = 0; i < coordinates.length; i++) {
+    var marker = L.marker([coordinates[i][0], coordinates[i][1]]).addTo(mymap);
+
+    const arrCategories = [];
+    for (let j = 0; j < data.businesses[i].categories.length; j++) {
+      arrCategories.push(`${data.businesses[i].categories[j].title}`);
+    }
+    let strCategories = arrCategories.join(', ');
+
+    marker.bindPopup(`<b>${data.businesses[i].name}</b><br>${strCategories}`);
+  }
+  
+}
+
+
+
+//////////////////////////////////////////////////////////////
+// YELP API SHIZZNESS ////////////////////////////////////////
+//////////////////////////////////////////////////////////////
 
 
 // MISCELLANEOUS /////////////////////////////////////////////
@@ -29,6 +97,7 @@ function displayView(view) {
     $('.view-results').removeClass('hidden');
     $('.branding').removeClass('hidden');
     $('.sortbar').removeClass('hidden');
+    $('#mapid').removeClass('hidden');
     $('main').removeClass('mode-root');
     $('.view-root').addClass('hidden');
   } else {
@@ -60,7 +129,7 @@ function fetchRestaurantInfo(area, distance, diet, sort = 'best_match') {
   };
 
   // apparently Yelp 'radius' value must be in meters (max value: 40000)
-  // convert distance from miles to meters
+  // so convert distance from miles to meters
   let distanceMeters = Math.floor(distance * 1609.344);
   const maxMeters = 40000;
   if (distanceMeters > maxMeters) {
@@ -76,7 +145,6 @@ function fetchRestaurantInfo(area, distance, diet, sort = 'best_match') {
 
   const queryString = formatQueryParams(params);
   const url = proxyBypassURL + baseURL + '?' + queryString;
-  // console.log(url);
 
   fetch(url, options)
     .then(response => {
@@ -86,28 +154,24 @@ function fetchRestaurantInfo(area, distance, diet, sort = 'best_match') {
       return response.json();
     })
     .then(data => {
-      // console.log(data);
       renderSearchResults(data);
+      renderMap(data, distance); 
       $('.please-wait').text('');
     })
     .catch(err => console.log(err));
   }  
-
-  // {{ FURTHER v2 ITERATION }}
-  // pass the Yelp restaurant address data to Google Maps Geocode API
-  // fetchMapData(addresses)
-  // {{ ... will Function Stub / Psuedocode later }}
 
 
 
 // TEMPLATE GENERATORS ///////////////////////////////////////
 
 function generateSearchResults(data) {
+
   const array = [];
   const arrCategories = [];
   
-
   for (let i = 0; i < data.businesses.length; i++) {
+
     for (let j = 0; j < data.businesses[i].categories.length; j++) {
       arrCategories.push(`
         <li class="cuisine">${data.businesses[i].categories[j].title}</li>
@@ -126,6 +190,7 @@ function generateSearchResults(data) {
     </ul>
     <address>
       <p><b>Address:</b> ${data.businesses[i].location.address1}, ${data.businesses[i].location.city}, ${data.businesses[i].location.state} ${data.businesses[i].location.zip_code}</p>
+      <p><b>Latitude:</b> ${data.businesses[i].coordinates.latitude} / <b>Longitude:</b> ${data.businesses[i].coordinates.longitude}<p>
       <p><b>Phone:</b> ${data.businesses[i].display_phone}</p>
     </address>
   </li>
@@ -143,7 +208,6 @@ function renderSearchResults(data) {
   const results = generateSearchResults(data);
   $('.js-results-list').html(results);
   displayView('results');
-  
 }
 
 
@@ -188,7 +252,6 @@ function handleInputs(sort) {
   
   fetchRestaurantInfo(area, distance, diet, sort);
 }
-
 
 
 // INVOKE INIT
