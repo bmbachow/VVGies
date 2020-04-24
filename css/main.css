@@ -21,6 +21,7 @@ WITH FLEXBOX CAUSE FORMAT BREAKS AT SO MANY BREAKPOINTS.
 
 #mapid { 
   height: 600px; 
+  width: 500px;
   margin: 20px 10px 0 10px;
   border: 1px solid black;
 }

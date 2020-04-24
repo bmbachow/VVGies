@@ -30,30 +30,46 @@ function init() {
 // LEAFLET MAP API SHIZZNESS /////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-function renderMap() {
+function renderMap(data) {
+
+  const coordinates = [];
+  for (let i = 0; i < data.businesses.length; i++) {
+    // push restaurant coordinates to array
+    const latitude = data.businesses[i].coordinates.latitude;
+    const longitude = data.businesses[i].coordinates.longitude;
+    coordinates.push([latitude, longitude]);
+  }
+  // console.log(coordinates);
+
+  // [1] initialise map 
+  // [2] setView(geographical coordinates [lat, long], zoomlevel)
+  // setView() also returns the map object
+  //
+  // as I don't have general geographical coodinates from city/zipcode of searchbar
+  // as stop gap I'm setting the view to the coordinates of the first restaurant
+  // asset 'base view' of map
+  const zoomLevel = 13;
+  var mymap = L.map('mapid').setView([coordinates[0][0], coordinates[0][1]], zoomLevel);
 
 
-// [1] initialise map 
-// [2] setView(geographical coordinates [lat, long], zoomlevel)
-// setView() also returns the map object
-var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+  // [3] add a (mapbox) 'tile layer' to add to our map 
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11', // mapbox/satellite-v9 // mapbox/streets-v11 
+    tileSize: 512,
+    zoomOffset: -1,
+    // mapbox.access.token
+    accessToken: 'pk.eyJ1IjoiYXJ0aWZpY2lhbGFyZWEiLCJhIjoiY2s5ZGFyYmo2MDFyejNmbGVsOGQ3eWZ5cCJ9.TIWmboj0G4JnLfQ0GhTDdw' 
+  }).addTo(mymap);
 
 
-// [3] add a (mapbox) 'tile layer' to add to our map 
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  maxZoom: 18,
-  id: 'mapbox/streets-v11', // mapbox/satellite-v9 // mapbox/streets-v11 
-  tileSize: 512,
-  zoomOffset: -1,
-  // mapbox.access.token
-  accessToken: 'pk.eyJ1IjoiYXJ0aWZpY2lhbGFyZWEiLCJhIjoiY2s5ZGFyYmo2MDFyejNmbGVsOGQ3eWZ5cCJ9.TIWmboj0G4JnLfQ0GhTDdw' 
-}).addTo(mymap);
-
-
-// [4a] add a marker
-var marker = L.marker([51.5, -0.09]).addTo(mymap);
-
+  // [4] add a marker(s)
+  // var marker = L.marker([51.5, -0.09]).addTo(mymap);
+  for (let i = 0; i < coordinates.length; i++) {
+    var marker = L.marker([coordinates[i][0], coordinates[i][1]]).addTo(mymap);
+  }
+  
 }
 
 
@@ -115,12 +131,9 @@ function fetchRestaurantInfo(area, distance, diet, sort = 'best_match') {
     sort_by: sort
   };
 
-  // add sorting
-  // console.log(params);
-
   const queryString = formatQueryParams(params);
   const url = proxyBypassURL + baseURL + '?' + queryString;
-  console.log(url);
+  // console.log(url);
 
   fetch(url, options)
     .then(response => {
@@ -130,74 +143,26 @@ function fetchRestaurantInfo(area, distance, diet, sort = 'best_match') {
       return response.json();
     })
     .then(data => {
-      console.log(data);
+      // console.log(data);
       renderSearchResults(data);
-      fetchGeocode(data); 
-      // renderMap(); // currently with bogus data
+      renderMap(data); 
+      // renderMap(); 
       $('.please-wait').text('');
     })
     .catch(err => console.log(err));
   }  
 
 
-function fetchGeocode(data) {
-  // how do I get multiple lat/lng at the same time?
-  // can I chain it thru the params in one URL?
-  // else multiple calls in a for loop?
-
-  const baseURL = 'https://maps.googleapis.com/maps/api/geocode/json?';
-  const apiKey = 'AIzaSyBN2R4SyxDVgxSicynY7L44gvqBrfWzHpI';
-
-  // get get past the CORS issue
-  // bypass with a proxy
-  const proxyBypassURL = 'https://galvanize-cors.herokuapp.com/'; 
-
-  const options = {
-    headers: new Headers({
-      'Authorization': 'Bearer ' + apiKey,
-    })
-  };
-
-  const params = {
-    address: area,
-    key: apiKey
-  };
-
-
-  const queryString = formatQueryParams(params);
-  // const url = proxyBypassURL + baseURL + '?' + queryString;
-  const url = baseURL + '?' + queryString;
-  console.log(url);
-
-  // fetch(url, options)
-  fetch(url)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-    })
-    .catch(err => console.log(err));  
-    
-  }
-  
-function fetchMap() {
-
-}
-
-
 
 // TEMPLATE GENERATORS ///////////////////////////////////////
 
 function generateSearchResults(data) {
+
   const array = [];
   const arrCategories = [];
   
-
   for (let i = 0; i < data.businesses.length; i++) {
+
     for (let j = 0; j < data.businesses[i].categories.length; j++) {
       arrCategories.push(`
         <li class="cuisine">${data.businesses[i].categories[j].title}</li>
@@ -216,6 +181,7 @@ function generateSearchResults(data) {
     </ul>
     <address>
       <p><b>Address:</b> ${data.businesses[i].location.address1}, ${data.businesses[i].location.city}, ${data.businesses[i].location.state} ${data.businesses[i].location.zip_code}</p>
+      <p><b>Latitude:</b> ${data.businesses[i].coordinates.latitude} / <b>Longitude:</b> ${data.businesses[i].coordinates.longitude}<p>
       <p><b>Phone:</b> ${data.businesses[i].display_phone}</p>
     </address>
   </li>
@@ -262,9 +228,7 @@ function handleInputs(sort) {
   const area = $('.area-input').val();
   $('.view-results').find('.area-input').val(area);
   const distance = $('.distance-input').val();
-  console.log(`distance: ${distance}`);
   // const sort = $('.sort-type').val();
-  // console.log(sort);
   const diet = [];
   if ($('#gluten-free-check').is(':checked')) {
     diet.push('gluten_free');
