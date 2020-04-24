@@ -74,12 +74,9 @@ function fetchRestaurantInfo(area, distance, diet, sort = 'best_match') {
     sort_by: sort
   };
 
-  // add sorting
-  // console.log(params);
-
   const queryString = formatQueryParams(params);
   const url = proxyBypassURL + baseURL + '?' + queryString;
-  console.log(url);
+  // console.log(url);
 
   fetch(url, options)
     .then(response => {
@@ -89,7 +86,7 @@ function fetchRestaurantInfo(area, distance, diet, sort = 'best_match') {
       return response.json();
     })
     .then(data => {
-      console.log(data);
+      // console.log(data);
       renderSearchResults(data);
       $('.please-wait').text('');
     })
@@ -175,9 +172,6 @@ function handleInputs(sort) {
   const area = $('.area-input').val();
   $('.view-results').find('.area-input').val(area);
   const distance = $('.distance-input').val();
-  console.log(`distance: ${distance}`);
-  // const sort = $('.sort-type').val();
-  // console.log(sort);
   const diet = [];
   if ($('#gluten-free-check').is(':checked')) {
     diet.push('gluten_free');
