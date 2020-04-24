@@ -31,12 +31,10 @@ function init() {
 //////////////////////////////////////////////////////////////
 
 function renderMap(data) {
-  console.log(`mymap: ${mymap}`);
-  // if(mymap != undefined || map != null) {
-  //   // mymap.off();
-  //   // mymap.remove();
-  //   mymap.invalidateSize();
-  // }
+  // To avoid "Error: Map Container Is Already Initialized" beyond the initial search
+  // destroy map, only to recreate it ;P
+  $('#js-map-container').empty();
+  $('#js-map-container').html('<div id="mapid""></div>');
 
   const coordinates = [];
   for (let i = 0; i < data.businesses.length; i++) {
@@ -45,18 +43,11 @@ function renderMap(data) {
     const longitude = data.businesses[i].coordinates.longitude;
     coordinates.push([latitude, longitude]);
   }
-  // console.log(coordinates);
 
   // [1] initialise map 
   // [2] setView(geographical coordinates [lat, long], zoomlevel)
-  // setView() also returns the map object
-  //
-  // as I don't have general geographical coodinates from city/zipcode of searchbar
-  // as stop gap I'm setting the view to the coordinates of the first restaurant
-  // asset 'base view' of map
   const zoomLevel = 13;
   var mymap = L.map('mapid').setView([coordinates[0][0], coordinates[0][1]], zoomLevel);
-
 
   // [3] add a (mapbox) 'tile layer' to add to our map 
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -69,9 +60,7 @@ function renderMap(data) {
     accessToken: 'pk.eyJ1IjoiYXJ0aWZpY2lhbGFyZWEiLCJhIjoiY2s5ZGFyYmo2MDFyejNmbGVsOGQ3eWZ5cCJ9.TIWmboj0G4JnLfQ0GhTDdw' 
   }).addTo(mymap);
 
-
   // [4] add a marker(s)
-  // var marker = L.marker([51.5, -0.09]).addTo(mymap);
   for (let i = 0; i < coordinates.length; i++) {
     var marker = L.marker([coordinates[i][0], coordinates[i][1]]).addTo(mymap);
   }
