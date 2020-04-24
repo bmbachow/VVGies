@@ -32,13 +32,14 @@ function renderMap(data, distance) {
   $('#js-map-container').html('<div id="mapid""></div>');
 
   const coordinates = [];
+  
   for (let i = 0; i < data.businesses.length; i++) {
     // push restaurant coordinates to array
     const latitude = data.businesses[i].coordinates.latitude;
     const longitude = data.businesses[i].coordinates.longitude;
     coordinates.push([latitude, longitude]);
   }
- 
+
 
   // [1] initialise map 
   // [2] setView(geographical coordinates [lat, long], zoomlevel)
@@ -70,7 +71,15 @@ function renderMap(data, distance) {
   // [4] add a marker(s)
   for (let i = 0; i < coordinates.length; i++) {
     var marker = L.marker([coordinates[i][0], coordinates[i][1]]).addTo(mymap);
-    marker.bindPopup(`<b>${data.businesses[i].name}</b>`);
+
+    const arrCategories = [];
+    for (let j = 0; j < data.businesses[i].categories.length; j++) {
+      arrCategories.push(`${data.businesses[i].categories[j].title}`);
+    }
+    let strCategories = arrCategories.join(', ');
+    // console.log(strCategories);
+
+    marker.bindPopup(`<b>${data.businesses[i].name}</b><br>${strCategories}`);
   }
   
 }
@@ -171,7 +180,7 @@ function generateSearchResults(data) {
       `);
     }
     let strCategories = arrCategories.join('');
-
+    // console.log(strCategories);
     array.push(`<li class="restaurant-item">
     <h2>${data.businesses[i].name}</h2>
     <ul class="food-types"> 
