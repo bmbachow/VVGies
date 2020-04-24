@@ -4,7 +4,7 @@
 //////////////////////////////////////////////////////////////
 // SEPARATION OF CONCERNS: TYPES OF FUNCTIONS
 //
-// Leaflet Map API shizzness:
+// Leaflet Map API Rendering
 //
 // Yelp API shizzness:
 // Miscellaneous (incl Fetch Request)
@@ -20,11 +20,6 @@ function init() {
   handleSort();
  }
 
-// $(() => {
-//   console.log('jQuery working', $);
-// });
-
-
 
 //////////////////////////////////////////////////////////////
 // LEAFLET MAP API SHIZZNESS /////////////////////////////////
@@ -32,7 +27,7 @@ function init() {
 
 function renderMap(data, distance) {
   // To avoid "Error: Map Container Is Already Initialized" beyond the initial search
-  // destroy map, only to recreate it ;P
+  // destroy map, only to then recreate it ;P
   $('#js-map-container').empty();
   $('#js-map-container').html('<div id="mapid""></div>');
 
@@ -125,7 +120,7 @@ function fetchRestaurantInfo(area, distance, diet, sort = 'best_match') {
   };
 
   // apparently Yelp 'radius' value must be in meters (max value: 40000)
-  // convert distance from miles to meters
+  // so convert distance from miles to meters
   let distanceMeters = Math.floor(distance * 1609.344);
   const maxMeters = 40000;
   if (distanceMeters > maxMeters) {
@@ -154,7 +149,6 @@ function fetchRestaurantInfo(area, distance, diet, sort = 'best_match') {
       // console.log(data);
       renderSearchResults(data);
       renderMap(data, distance); 
-      // renderMap(); 
       $('.please-wait').text('');
     })
     .catch(err => console.log(err));
@@ -207,7 +201,6 @@ function renderSearchResults(data) {
   const results = generateSearchResults(data);
   $('.js-results-list').html(results);
   displayView('results');
-  
 }
 
 
@@ -253,7 +246,6 @@ function handleInputs(sort) {
   
   fetchRestaurantInfo(area, distance, diet, sort);
 }
-
 
 
 // INVOKE INIT
