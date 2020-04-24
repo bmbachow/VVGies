@@ -30,7 +30,7 @@ function init() {
 // LEAFLET MAP API SHIZZNESS /////////////////////////////////
 //////////////////////////////////////////////////////////////
 
-function renderMap(data) {
+function renderMap(data, distance) {
   // To avoid "Error: Map Container Is Already Initialized" beyond the initial search
   // destroy map, only to recreate it ;P
   $('#js-map-container').empty();
@@ -43,11 +43,22 @@ function renderMap(data) {
     const longitude = data.businesses[i].coordinates.longitude;
     coordinates.push([latitude, longitude]);
   }
+ 
 
   // [1] initialise map 
   // [2] setView(geographical coordinates [lat, long], zoomlevel)
-  const zoomLevel = 13;
+  let zoomLevel;
+  if (distance == 2) {
+    zoomLevel = 13;
+  } else if (distance == 5) {
+    zoomLevel = 12.5;
+  } else if (distance == 10) {
+    zoomLevel = 12.4;
+  } else if (distance == 25) {
+    zoomLevel = 12.3;
+  }
   var mymap = L.map('mapid').setView([coordinates[0][0], coordinates[0][1]], zoomLevel);
+
 
   // [3] add a (mapbox) 'tile layer' to add to our map 
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -60,6 +71,7 @@ function renderMap(data) {
     accessToken: 'pk.eyJ1IjoiYXJ0aWZpY2lhbGFyZWEiLCJhIjoiY2s5ZGFyYmo2MDFyejNmbGVsOGQ3eWZ5cCJ9.TIWmboj0G4JnLfQ0GhTDdw' 
   }).addTo(mymap);
 
+  
   // [4] add a marker(s)
   for (let i = 0; i < coordinates.length; i++) {
     var marker = L.marker([coordinates[i][0], coordinates[i][1]]).addTo(mymap);
@@ -140,7 +152,7 @@ function fetchRestaurantInfo(area, distance, diet, sort = 'best_match') {
     .then(data => {
       // console.log(data);
       renderSearchResults(data);
-      renderMap(data); 
+      renderMap(data, distance); 
       // renderMap(); 
       $('.please-wait').text('');
     })
