@@ -49,6 +49,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 // [4a] add a marker
 var marker = L.marker([51.5, -0.09]).addTo(mymap);
 
+
 //////////////////////////////////////////////////////////////////////////////////////
 // [4b] add a circle
 var circle = L.circle([51.508, -0.11], {
