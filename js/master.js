@@ -89,6 +89,7 @@ function renderMap(data, distance) {
 // YELP API SHIZZNESS ////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
+
 // MISCELLANEOUS /////////////////////////////////////////////
 
 function displayView(view) {
@@ -235,7 +236,6 @@ function handleInputs(sort) {
   const area = $('.area-input').val();
   $('.view-results').find('.area-input').val(area);
   const distance = $('.distance-input').val();
-  // const sort = $('.sort-type').val();
   const diet = [];
   if ($('#gluten-free-check').is(':checked')) {
     diet.push('gluten_free');
