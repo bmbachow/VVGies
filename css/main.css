@@ -20,7 +20,8 @@
 
 .mode-root .searchbar .search-form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   
 }
 
@@ -161,11 +162,3 @@ main {
 #mapid { 
   height: 600px; 
 }
-
-
-/* 768 /////////////////////////////////////*/
-@media screen and (min-width: 768px) {}
-/* 1024 /////////////////////////////////////*/
-@media screen and (min-width: 1024px) {}
-/* 1280 /////////////////////////////////////*/
-@media screen and (min-width: 1280px) {}
