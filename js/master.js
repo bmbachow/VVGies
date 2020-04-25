@@ -207,8 +207,8 @@ function generateSearchResults(data) {
       </address>
       <ul class="food-types"> 
         <li class="price">${data.businesses[i].price}</li>
-        <li class="diet">Rating:${data.businesses[i].rating}</li>
-        <li class="diet">Reviews:${data.businesses[i].review_count}</li>
+        <li class="diet">Rating: ${data.businesses[i].rating}</li>
+        <li class="diet">Reviews: ${data.businesses[i].review_count}</li>
       </ul>
     </li>
     `);
