@@ -47,13 +47,17 @@ body {
   /* border: 1px solid black; */
   padding: 10px;
   margin: 10px;
-  width: 100%;
-  height: 100px;
+  /* width: 100px;
+  height: 100px; */
   /* background-color: rgba(0, 0, 0, 0.8); */
   color: white;
-  background: url(/img/vvgies.svg);
+  /* background: url(/img/vvgies.svg);
   background-size: 200px;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+}
+
+img {
+  width: 200px;
 }
 
 footer {
