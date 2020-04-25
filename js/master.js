@@ -181,6 +181,11 @@ function generateSearchResults(data) {
 
     array.push(`<li class="restaurant-item">
     <h2>${data.businesses[i].name}</h2>
+    
+    <address>
+      <p><b>Address:</b> ${data.businesses[i].location.address1}, ${data.businesses[i].location.city}, ${data.businesses[i].location.state} ${data.businesses[i].location.zip_code}<br>
+      <b>Phone:</b> ${data.businesses[i].display_phone}</p>
+    </address>
     <ul class="food-types"> 
       <!--<li class="cuisine">${data.businesses[i].categories[0].title}</li>-->
       ${strCategories}
@@ -188,10 +193,6 @@ function generateSearchResults(data) {
       <li class="diet">Rating:${data.businesses[i].rating}</li>
       <li class="diet">Reviews:${data.businesses[i].review_count}</li>
     </ul>
-    <address>
-      <p><b>Address:</b> ${data.businesses[i].location.address1}, ${data.businesses[i].location.city}, ${data.businesses[i].location.state} ${data.businesses[i].location.zip_code}</p>
-      <p><b>Phone:</b> ${data.businesses[i].display_phone}</p>
-    </address>
   </li>
     `);
     arrCategories.length = 0;
