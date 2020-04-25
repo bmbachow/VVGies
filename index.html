@@ -22,16 +22,16 @@
 </head>
 <body>
   
-  <main class="mode-root">
+<main class="mode-root">
 
   <header class="branding hidden">[Branding?]</header>
 
-   <nav class="searchbar">    
+   <nav class="searchbar">
+        
       <form class="search-form"> 
         <div class="area">
           <label for="area">Area</label>
-          <input type="text" class="area-input" name="area" placeholder="Enter city or zipcode..." required>
-          <button type="submit">Submit</button>
+          <input type="text" class="area-input" name="area" placeholder="Enter city or zipcode..." required>          
         </div>
 
         <div class="distance">
@@ -43,23 +43,25 @@
               <option value="25">25 miles</option>
           </select> 
         </div>
-      </form>
-
+      
       <div class="filter-by-diet">
-        <div class="diet">
+        <div>
           <input type="checkbox" id="gluten-free-check" name="gluten-free" value="gluten-free">
           <label for="gluten-free">Gluten-Free</label>
         </div>
-        <div class="diet">
+        <div>
           <input type="checkbox" id="vegan-check" name="vegan" value="vegan">
           <label for="vegan">Vegan</label>
         </div>
-        <div class="diet">
+        <div>
           <input type="checkbox" id="vegetarian-check" name="vegetarian" value="vegetarian">
           <label for="vegetarian">Vegetarian</label>
         </div>
       </div> 
-    
+
+    <button class="submit" type="submit">Submit</button>
+  </form>
+
       <div class="sortbar hidden">
         <label for="sort-type">Sorted by: </label>
         <select name="sort-type" class="sort-type">
@@ -83,7 +85,7 @@
     <!-- element to render leaflet.api -->
     <div id="mapid" class='hidden'></div>
 
-  </main>
+</main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 

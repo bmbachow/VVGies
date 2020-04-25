@@ -1,5 +1,3 @@
-/* intro page */
-
 .hidden {
   display: none;
 }
@@ -9,28 +7,77 @@
   justify-content: center;  
 }
 
-.searchbar {
+.mode-root .searchbar {
   flex-basis: 60vw;
   max-width: 600px;
   border: 2px solid black;
   padding: 20px;
   margin-top: 30vh;
   flex-wrap: wrap;
+  }
+
+.mode-root .search-form {
+  display: flex;
+  flex-wrap: wrap;
 }
+
+.mode-root .area {
+  order: 1;
+  flex: 1;
+ }
+
+.mode-root .distance {
+  order: 2;
+  } 
+
+.mode-root .area , .mode-root .distance {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.mode-root .filter-by-diet {
+  display: flex;
+  order: 3;
+}
+
+.mode-root .submit {
+  order: 5;
+  align-self: flex-end;
+}
+
+
+
+
+
+
+
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+.searchbar {
+  display: flex;
+  flex-grow: 1;
+  border: 2px solid black;
+  padding: 20px;
+  flex-wrap: wrap;
+  }
 
 .search-form {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .area {
-  
-  flex: 2 1 0;
-}
+  order: 1;
+  flex: 1;
+ }
 
 .distance {
-  
-  flex: 1 1 0;
-} 
+  order: 2;
+  } 
 
 .area , .distance {
   font-size: 20px;
@@ -39,6 +86,35 @@
 
 .filter-by-diet {
   display: flex;
-  justify-content: space-evenly;
+  order: 3;
 }
+
+.submit {
+  order: 5;
+}
+
+.sortbar {
+  order: 4;
+}
+
+.js-results-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.js-results-list li {
+  border: 2px solid black;
+}
+
+
+/* REPONSIVE DESIGN ////////////////////////*/
+/* 480 /////////////////////////////////////*/
+@media screen and (min-width: 680px) {}
+/* 768 /////////////////////////////////////*/
+@media screen and (min-width: 768px) {}
+/* 1024 /////////////////////////////////////*/
+@media screen and (min-width: 1024px) {}
+/* 1280 /////////////////////////////////////*/
+@media screen and (min-width: 1280px) {}
+
 
