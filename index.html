@@ -31,7 +31,7 @@
   
   <main class="mode-root">
 
-    <header class="branding"></header>
+    <header class="branding"><img src="/img/vvgies.svg" alt="VVGies logo"></header>
     
     <nav class="searchbar">
         
@@ -82,19 +82,19 @@
       
     </nav>
 
-    <section class="view-root"></section>
-
     <section class="view-results hidden">
       <div id="js-map-container">
         <!-- element to render leaflet.api -->
         <div id="mapid" class='hidden'></div>
       </div>
-
-      <ul class="js-results-list"></ul>
-      
-      <footer>Made by Brian & Sacha</footer>
+      <div id="results-list-container">
+        <ul class="js-results-list"></ul>
+      </div>
     </section>
 
+    <div class="footer">
+      <footer>Made by Brian & Sacha</footer>
+    </div>
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
