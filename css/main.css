@@ -77,6 +77,10 @@ main.mode-root {
   background-repeat: no-repeat; */
 }
 
+.branding img {
+  width: 200px;
+}
+
 
 .footer {
   /* align-self: flex-start; */
