@@ -18,6 +18,7 @@
 function init() {
   handleSubmission();
   handleSort();
+  handleStyledCheckboxes();
  }
 
 
@@ -266,8 +267,30 @@ function handleInputs(sort) {
     diet.push('vegetarian');
     $('.view-results').find('#vegetarian-check').attr('checked', true);
   } 
-  
+  console.log(diet);
   fetchRestaurantInfo(area, distance, diet, sort);
+}
+
+function handleStyledCheckboxes() {
+  // by mouse/finger
+  $('.filter-by-diet label').on('click', event => {
+    event.stopPropagation();
+    console.log(`click: ${event.currentTarget}`);
+    $(event.target).toggleClass('js-checked');
+  });
+  // a11y by [spacebar]
+  $('.filter-by-diet input').on('keypress', event => {
+    event.stopPropagation();
+    console.log(`keypress: ${event.currentTarget}`);
+    if (event.which == 32){ // spacebar
+      $(event.target).siblings().toggleClass('js-checked');
+      console.log(`key: ${event.which}`);
+    }
+    if (event.keyCode == 9){ // tab
+      $(event.target).siblings().toggleClass('js-a11y-label');
+      console.log(`key: ${event.which}`);
+    }
+  });
 }
 
 
