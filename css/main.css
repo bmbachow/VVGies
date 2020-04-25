@@ -211,6 +211,11 @@ p {
   margin-top: 10px;
   margin-bottom: 40px;
 }
+
+.tab {
+  margin-top: 60px;
+}
+
 .food-types {
   list-style: none;
   padding: 0;

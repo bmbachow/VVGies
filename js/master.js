@@ -179,21 +179,38 @@ function generateSearchResults(data) {
     }
     let strCategories = arrCategories.join('');
 
-    array.push(`<li class="restaurant-item">
-    <h2>${data.businesses[i].name}</h2>
-    
-    <address>
-      <p><b>Address:</b> ${data.businesses[i].location.address1}, ${data.businesses[i].location.city}, ${data.businesses[i].location.state} ${data.businesses[i].location.zip_code}<br>
-      <b>Phone:</b> ${data.businesses[i].display_phone}</p>
-    </address>
-    <ul class="food-types"> 
-      <!--<li class="cuisine">${data.businesses[i].categories[0].title}</li>-->
+  //   array.push(`<li class="restaurant-item">
+  //   <h2>${data.businesses[i].name}</h2>
+  //   <address>
+  //     <p><b>Address:</b> ${data.businesses[i].location.address1}, ${data.businesses[i].location.city}, ${data.businesses[i].location.state} ${data.businesses[i].location.zip_code}<br>
+  //     <b>Phone:</b> ${data.businesses[i].display_phone}</p>
+  //   </address>
+  //   <ul class="food-types"> 
+  //     <!--<li class="cuisine">${data.businesses[i].categories[0].title}</li>-->
+  //     ${strCategories}
+  //     <li class="price">${data.businesses[i].price}</li>
+  //     <li class="diet">Rating:${data.businesses[i].rating}</li>
+  //     <li class="diet">Reviews:${data.businesses[i].review_count}</li>
+  //   </ul>
+  // </li>
+  //   `);
+
+    array.push(`
+    <ul class="food-types tab"> 
       ${strCategories}
-      <li class="price">${data.businesses[i].price}</li>
-      <li class="diet">Rating:${data.businesses[i].rating}</li>
-      <li class="diet">Reviews:${data.businesses[i].review_count}</li>
     </ul>
-  </li>
+    <li class="restaurant-item">
+      <h2>${data.businesses[i].name}</h2>
+      <address>
+        <p><b>Address:</b> ${data.businesses[i].location.address1}, ${data.businesses[i].location.city}, ${data.businesses[i].location.state} ${data.businesses[i].location.zip_code}<br>
+        <b>Phone:</b> ${data.businesses[i].display_phone}</p>
+      </address>
+      <ul class="food-types"> 
+        <li class="price">${data.businesses[i].price}</li>
+        <li class="diet">Rating:${data.businesses[i].rating}</li>
+        <li class="diet">Reviews:${data.businesses[i].review_count}</li>
+      </ul>
+    </li>
     `);
     arrCategories.length = 0;
   }
