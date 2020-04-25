@@ -31,7 +31,7 @@ WITH FLEXBOX CAUSE FORMAT BREAKS AT SO MANY BREAKPOINTS.
 #mapid { 
   height: 400px; 
   /* width: 30%; */
-  margin-top: 20px;
+  margin-top: 45px;
   /* margin-right: auto;
   margin-left: auto; */
   border: 1px solid black;
@@ -43,7 +43,7 @@ WITH FLEXBOX CAUSE FORMAT BREAKS AT SO MANY BREAKPOINTS.
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1rem;
-  background-color: #FEC3A6;
+  background-color: #E1CCA1;
   margin: 0 10px 0 10px;
   
 }
@@ -85,15 +85,19 @@ main.mode-root {
 
 .footer {
   /* align-self: flex-start; */
-  border: 1px solid black;
   padding: 10px;
   margin-top: 100px;
   font-size: 0.8rem;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
+  background-color: #9C7B52;
+  color: #E1CCA1;
   width: 100%;
+  text-align: center;
+  width: 100vw;
 }
 
+.mode-root > .footer {
+  display: none;
+}
 
 /*/ SEARCHBAR ////////////////////////////////////////*/
 
@@ -105,9 +109,12 @@ nav {
   margin-top: 10px;
   margin-right: auto;
   margin-left: auto;
-  background-color: #FF928B;
+  background-color: #725641;
   max-width: 1080px;
+  color: #E1CCA1;
+  border-radius: 15px;
 }
+
 
 form {
   display: flex;
@@ -128,14 +135,28 @@ input {
 
 .area {
   flex-grow:2;
+
 }
+
+.area label {
+  font-size: 20px;
+}
+
+.distance label {
+  font-size: 20px;
+}
+
 
 .area-input {
   width: 60%;
+  background-color: #E1CCA1;
+  font-weight: bolder;
+  color: #725641;
 }
 
 .distance {
   flex-grow: 1;
+  margin-top: 8px;
 }
 
 button {
@@ -201,17 +222,22 @@ a toggled state with no JavaScript! */
   /* border: 1px solid black; */
   padding: 10px;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #E1CCA1;
+  color: #725641;
+  font-weight: bolder;
+  border-radius: 0 0 7px 7px;
 }
 
 .please-wait {
   /* display: inline-block; */
   margin: 0 0 0 10px;
   font-weight: bold;
-  /* color: red; */
+  /* color: red; */git 
 }
 
-
+/* .tab li {
+  color: #725641
+} */
 
 /*/ RESULTS ////////////////////////////////////////*/
 
@@ -231,6 +257,10 @@ a toggled state with no JavaScript! */
   margin: 0;
 }
 
+.js-results-list {
+  color: #E1CCA1;
+}
+
 ul { 
   padding: 0 10px 0 10px;
   list-style: none;
@@ -241,11 +271,20 @@ ul {
   /* position: relative; */
   /* border: 1px solid grey; */
   /* background-color: rgba(0, 0, 0, 0.1); */
-  background-color: rgb(239, 233, 174, 0.5);
+  background-color: #725641;
   /* min-height: 200px; */
   margin-bottom: 20px;
   vertical-align: middle;
   padding: 20px;
+  border-radius: 0 20px 20px 20px;
+}
+
+/* .js-results-list > .tab {
+  border-radius: 20px;
+} */
+
+.diet {
+  color: #E1CCA1;
 }
 
 h2 {
@@ -257,10 +296,10 @@ p {
   margin-bottom: 40px;
 }
 
-.tab {
+/* .tab {
   margin-top: 60px;
+} */
 
-}
 
 .food-types {
   list-style: none;
@@ -271,22 +310,21 @@ p {
   display: inline-block;
   padding: 5px 10px;
   margin: 0 0 5px 0;
-  border: 2px solid rgb(0, 0, 0, 0.6); 
-  color:  rgb(0, 0, 0, 0.6);
-  font-weight: bold;
+  /* border: 2px solid rgb(0, 0, 0, 0.6);  */
+  color: #E1CCA1;
+  font-weight: bolder;
   font-size: 0.7rem
 }
 
 .food-types .cuisine {
-  background-color: black;
-  color: white;
+  background-color: #725641;
+  color: #E1CCA1;
 }
 
 .food-types .price {
-  border: 2px solid rgb(0, 0, 0, 0);
   /* border: none; */
-  background-color: rgb(0, 0, 0, 0.6);
-  color: white;
+  background-color: #E1CCA1;
+  color: #725641;
 }
 
 address {
@@ -330,11 +368,9 @@ a:hover {
   }
 
 
-  /* #results-list-container { 
-    width: 40%;
-    margin: 0;
-  } */
-
+  #results-list-container { 
+    padding: 30px;
+  }
 
   /* #js-map-container { 
     position: -webkit-sticky; 
@@ -374,11 +410,6 @@ a:hover {
 @media screen and (min-width: 1024px) {
 
   #js-map-container { /* RD */
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 0;
-    align-self: flex-start;
-    margin: 0 10px 0 10px;
     width: 500px;
   }
 }
