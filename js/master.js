@@ -190,7 +190,6 @@ function generateSearchResults(data) {
     </ul>
     <address>
       <p><b>Address:</b> ${data.businesses[i].location.address1}, ${data.businesses[i].location.city}, ${data.businesses[i].location.state} ${data.businesses[i].location.zip_code}</p>
-      <p><b>Latitude:</b> ${data.businesses[i].coordinates.latitude} / <b>Longitude:</b> ${data.businesses[i].coordinates.longitude}<p>
       <p><b>Phone:</b> ${data.businesses[i].display_phone}</p>
     </address>
   </li>
