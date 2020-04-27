@@ -289,7 +289,7 @@ function handleStyledCheckboxes() {
   }); 
 
   // a11y for [tab] element:focus 
-  // sceanario 1
+  // sceanario
   $('.searchbar').on('keydown', event => {
     $('.filter-by-diet input').on('focus', event => {
       // reset
@@ -299,13 +299,16 @@ function handleStyledCheckboxes() {
     });
   });
   // a11y for [tab] !element:focus 
-  // sceanarios 2/3
+  // sceanarios
   $('button[type=submit]').on('focus', event => {
     $('.filter-by-diet label').removeClass('js-a11y-tab-on');
   });
   $('.distance-input').on('focus', event => {
     $('.filter-by-diet label').removeClass('js-a11y-tab-on');
   }); 
+  $('.area-input').on('click', event => {
+    $('.filter-by-diet label').removeClass('js-a11y-tab-on');
+  });
 
 }
 
