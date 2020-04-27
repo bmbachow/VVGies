@@ -227,7 +227,7 @@ button {
   /* display: inline-block; */
   margin: 0 0 0 10px;
   font-weight: bold;
-  /* color: red; */git 
+  /* color: red; */
 }
 
 /* .tab li {
@@ -241,10 +241,7 @@ button {
   flex-wrap: wrap;
   flex-direction: row-reverse;
   justify-content: center;
- 
-  /* top: 280px;
-  left: 0;
-  width: 100%; */
+
 }
 
 #results-list-container { /* RD */
@@ -353,14 +350,6 @@ a:hover {
   .sortbar { 
     top: 140px;
     left: 0;
-  }
-
-
-  .view-results { 
-    /* position: absolute;
-    top: 240px;
-    left: 0;
-    width: 100%; */
   }
 
 
