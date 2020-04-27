@@ -9,11 +9,10 @@ https://artificialarea.github.io/VVGies/
 
 ## Screenshots
 Landing page:
-INSERT: SCREENSHOT-1
+![Screenshot of Landing Page](/img/for_README/screenshot-01.png)
 
 Results page:
-INSERT: SCREENSHOT-2
-
+![Screenshot of Results Page](/img/for_README/screenshot-02.png)
 
 ## Technologies Used
 The app was built using HTML, CSS, JavaScript, jQuery, and [Leaflet](https://leafletjs.com/) JavaScript library.
