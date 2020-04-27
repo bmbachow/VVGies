@@ -15,8 +15,7 @@ Results page:
 ![Screenshot of Results Page](/img/for_README/screenshot-02.png)
 
 ## Technologies Used
-The app was built using HTML, CSS, JavaScript, jQuery, and [Leaflet](https://leafletjs.com/) JavaScript library.
-
+The app was built using HTML, CSS, JavaScript, jQuery, and <a href="https://leafletjs.com/" target="_blank">Leaflet</a> JavaScript library.
 
 ## APIs Used
 For Restaurant Search Results:
