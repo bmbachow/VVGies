@@ -17,6 +17,7 @@
  
   -->
 
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Lora:wght@700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
 
@@ -53,23 +54,21 @@
 
         <div class="filter-by-diet">
           <div>
-            <label for="gluten-free-check">Gluten-Free</label>
-            <input type="checkbox" id="gluten-free-check" value="gluten-free" class="visually-hidden">
-            <!-- <div class="styled-checkbox"></div> -->
-          </div>
-          <div>
-            <label for="vegan-check">Vegan</label>
-            <input type="checkbox" id="vegan-check" value="vegan" class="visually-hidden">
-            <!-- <div class="styled-checkbox"></div> -->
-          </div>
-          <div>
-            <label for="vegetarian-check">Vegetarian</label>
             <input type="checkbox" id="vegetarian-check" value="vegetarian" class="visually-hidden">
-            <!-- <div class="styled-checkbox"></div> -->
+            <label for="vegetarian-check" class="for-a11y">Vegetarian</label>
+          </div>
+          <div>
+            <input type="checkbox" id="vegan-check" value="vegan" class="visually-hidden">
+            <label for="vegan-check" class="for-a11y">Vegan</label>
+          </div>
+          <div>
+             <input type="checkbox" id="gluten-free-check" value="gluten-free" class="visually-hidden">
+            <label for="gluten-free-check" class="for-a11y">Gluten-Free</label>
           </div>
         </div> 
-
-        <button type="submit">Submit</button>
+        <div class="button">
+          <button type="submit">Submit</button>
+        </div>
       </form>
 
       <div class="sortbar hidden">

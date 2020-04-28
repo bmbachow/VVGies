@@ -1,7 +1,5 @@
 /* MOBILE FIRST! */
 
-/*** MASTER CHANGES ***/
-
 * {
   box-sizing: border-box;
   /* border: 1px solid red; */
@@ -11,37 +9,18 @@
   display: none;
 }
 
-
-
-/*/ LEAFLET //////////////////////////////////////////*/
-
-#js-map-container { /* RD */
-  /* position: -webkit-sticky; 
-  position: sticky;
-  top: 0;
-  align-self: flex-start; */
-  margin: 0 10px 0 10px;
-  width: 100%;
-}
-
-#mapid { 
-  height: 400px; 
-  /* width: 30%; */
-  margin-top: 45px;
-  /* margin-right: auto;
-  margin-left: auto; */
-  border: 1px solid black;
-}
-
-
-/*/ UNIVERSAL ////////////////////////////////////////*/
-
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Lato', sans-serif; 
+  font-weight: 400; /* weights: 300, 400, 700 */
   font-size: 1rem;
   background-color: #FEC3A6;
   margin: 0 10px 0 10px;
-  
+}
+
+h2 {
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  margin: 0;
 }
 
 main {
@@ -52,36 +31,29 @@ main {
 }
 
 main.mode-root {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  /* justify-content: center;  */
-  align-items: center;
-  /* height: 600px;
-  margin: 10px; */
+  /* unable to center elements vertically (even via the parent, body) */
 }
 
 .branding {
-  /* border: 1px solid black; */
   padding: 10px;
   margin: 10px;
-  /* width: 100%; */
   height: 100px;
-  /* background-color: rgba(0, 0, 0, 0.8); */
-  /* background: url(/img/vvgies.svg);
-  background-size: 200px;
-  background-repeat: no-repeat; */
 }
-
 
 .branding img {
   max-width: 550px;
   width: 80vw;
 }
 
+.mode-root .branding img {
+  width: 400px;
+}
+
+.searchbar { /* RD, too */
+  width: 100%;
+}
 
 .footer {
-  /* align-self: flex-start; */
   padding: 10px;
   margin-top: 100px;
   font-size: 0.8rem;
@@ -92,6 +64,11 @@ main.mode-root {
   width: 100vw;
 }
 
+.msg-invalid {
+  color: red;
+  font-size: 2rem;
+}
+
 .mode-root > .footer {
   display: none;
 }
@@ -99,8 +76,6 @@ main.mode-root {
 /*/ SEARCHBAR ////////////////////////////////////////*/
 
 .searchbar {
-  /* position: relative; */
-  /* border: 1px solid black; */
   padding: 10px;
   margin: 10px;
   margin-top: 10px;
@@ -114,54 +89,64 @@ main.mode-root {
   font-weight: bolder;
 }
 
-
 form {
   display: flex;
-  justify-content: space-between;
   flex-flow: wrap;
-  margin-bottom: 20px;
-}
-
-form label {
-  /* display: block; */
-  font-size: 0.8rem;
-  padding: 5px;
-}
-
-input {
-  padding: 10px;
+  max-width: 600px;
 }
 
 .area {
-  flex-grow:2;
-
+  order: 1;
+  flex-grow: 5;
+  max-width: 600px;
+  
 }
 
-.area label {
-  font-size: 20px;
-}
-
-.distance label {
-  font-size: 20px;
-}
-
-
-.area-input {
-  width: 60%;
-  background-color: rgb(238, 238, 238);
-  font-weight: bolder;
-  /* color: #725641; */
+.button {
+  order: 2;
+  align-self: flex-end;
+  margin: 0 40px 0 5px;
 }
 
 .distance {
-  flex-grow: 1;
-  margin-top: 8px;
+  order: 3;
+  flex-grow: 0;
+}
+
+.filter-by-diet {
+  order: 4;
+  margin-top: 16px;
+  flex-grow: 0;
+}
+
+.area label,
+.distance label {
+  display: block;
+  font-size: 0.9rem;
+  padding: 5px;
+}
+
+.area-input {
+  background-color: rgb(238, 238, 238);
+  font-weight: normal;
+  padding: 10px;
+  width: 100%;
+}
+
+.invalid {
+  border: 2px solid red;
+}
+
+.invalid-text {
+  color: red;
+  font-weight: bold;
 }
 
 button {
-  height: 45px;
-  padding: 10px;
-  /* margin-top: 20px; */
+  box-sizing: border-box;
+  font-weight: bold;
+  padding: 8px 10px 8px 10px;
+  border: 4px solid black;
 }
 
 .filter-by-diet {
@@ -172,60 +157,43 @@ button {
 
 .filter-by-diet div {
   display: inline-block;
-  /* margin-right: 10px; */
-  /* position: absolute;
-  top: 15px;
-  right: 20px; */
 }
 
 .filter-by-diet label {
   display: inline-block;
   padding: 5px 10px;
   margin: 5px 0 5px 0;
-  /* background-color: rgb(0, 0, 0, 0); */
   border: 2px solid rgb(0, 0, 0, 1); 
   color:  rgb(0, 0, 0, 1);
-  font-weight: bold;
-  font-size: 1rem
+  font-weight: normal;
+  font-size: 1rem;
 }
 
-.js-a11y-label {
-  background-color: rgb(0, 0, 0, 0.7); ;
+/* a11y simulator: to mimic the color of element:focus while tab'ing */
+.filter-by-diet .js-a11y-tab-on {
+  box-shadow: 0 0 5px #4671C2;
+  border: 2px solid rgb(0, 0, 0, 1); 
+
 }
-.js-checked {
-  background-color: rgb(0, 0, 0, 0.2); ;
-  /* CAN"T GET THE FRIGGIN' FONT COLOR TO CHANGE?!?! 
-  seems that *any parameter* I have in the non-clicked state of '.filter-by-diet label' selector doesn't get over-ridden */
-  /* color: white; */
+
+.filter-by-diet .js-checked {
+  border: 2px solid rgb(0, 0, 0, 1); 
+  background-color: #FF5733; 
 }
 
 .visually-hidden {
   opacity: 0;
   position: absolute;
-  left: -100vw;
+  /* left: -100vw; */
 }
 
-/* can't get the #toggle:checked part to work per 
-https://codepen.io/chriscoyier/pen/vYERPwM 
-a toggled state with no JavaScript! */
 
-/* .styled-checkbox::after {
-  background-color: rgb(241, 241, 134, 0.5);
-  content: "😃";
-  font-size: 100px;
-}
-
-#toggle:checked ~ .styled-checkbox::after {
-  background-color: rgba(238, 117, 157, 0.5);
-  content: "😩";
-} */
 
 /*/ SORTBAR ////////////////////////////////////////*/
 
-.sortbar { /* see: RD */
-  /* position: absolute; */
-  /* border: 1px solid black; */
+.sortbar { /* RD, too */
   padding: 10px;
+  margin-top: 16px;
   width: 100%;
   background-color: rgb(0, 0, 0, 0.1);
   color: black;
@@ -234,27 +202,22 @@ a toggled state with no JavaScript! */
 }
 
 .please-wait {
-  /* display: inline-block; */
+  display: inline-block;
   margin: 0 0 0 10px;
   font-weight: bold;
   /* color: red; */
 }
 
-/* .tab li {
-  color: #725641
-} */
+
 
 /*/ RESULTS ////////////////////////////////////////*/
 
-.view-results { /* see: RD */
+.view-results { /* RD, too */
   display: flex;
   flex-wrap: wrap;
   flex-direction: row-reverse;
   justify-content: center;
- 
-  /* top: 280px;
-  left: 0;
-  width: 100%; */
+
 }
 
 .view-results , footer {
@@ -266,54 +229,22 @@ a toggled state with no JavaScript! */
   margin: 0;
 }
 
-.js-results-list {
-  /* color: #E1CCA1; */
-}
-
 ul { 
-  padding: 0 10px 0 10px;
+  padding: 0 10px 0 0;
   list-style: none;
-  
 }
 
 .restaurant-item {
-  /* position: relative; */
-  /* border: 1px solid grey; */
-  /* background-color: rgba(0, 0, 0, 0.1); */
-  background-color: rgb(239, 233, 174, 0.5);
-  /* min-height: 200px; */
-  margin-bottom: 20px;
+  background-color: white;
+  margin-bottom: 60px;
   vertical-align: middle;
   padding: 20px;
   border-radius: 0 20px 20px 20px;
-}
-
-/* .js-results-list > .tab {
-  border-radius: 20px;
-} */
-
-.diet {
-  /* color: #E1CCA1; */
-}
-
-h2 {
-  margin: 0;
-}
-
-p {
-  margin-top: 10px;
-  margin-bottom: 40px;
-}
-
-/* .tab {
-  margin-top: 60px;
-} */
-
+}v
 
 .food-types {
   list-style: none;
   padding: 0;
-
 }
 
 .food-types li {
@@ -328,21 +259,33 @@ p {
 
 .food-types .cuisine {
   font-weight: normal;
-  background-color: rgb(0, 0, 0, 0.8);
+  background-color: #FF5733;
   color: white;
-  ;
+  border-radius: 20px 20px 20px 0;
 }
 
 .food-types .price {
-  /* border: none; */
-  background-color: rgb(0, 0, 0, 0.2);
-  color: black;
+  padding: 0;
+  padding-right: 5px;
+  margin: 0;
+  color: rgb(255, 65, 51);
+  /* font-weight: 300; */
+}
+
+.food-types .user-input {
+  padding-left: 0;
+  padding-bottom: 0;
+  margin: 0;
+  color: rgb(255, 65, 51);
+  font-weight: 300;
 }
 
 address {
   font-style: normal;
-  font-size: 0.8rem;
-  line-height: 1.4;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-top: 25px;
+  margin-bottom: 40px;
 }
 
 a {
@@ -355,9 +298,22 @@ a:hover {
 
 
 
+/*/ LEAFLET MAP ///////////////////////////////////////*/
+
+#js-map-container { /* RD, too */
+  margin: 0 10px 20px 10px;
+  width: 100%;
+}
+
+#mapid { 
+  height: 400px; 
+  margin-top: 45px;
+  border: 1px solid black;
+}
 
 
-/* REPONSIVE DESIGN ////////////////////////*/
+
+/* REPONSIVE DESIGNS ///////////////////////*/
 /* 480 /////////////////////////////////////*/
 
 @media screen and (max-width: 680px) {
@@ -388,39 +344,17 @@ a:hover {
     width: 500px;
   }
 
-
   .sortbar { 
     top: 140px;
     left: 0;
   }
 
-
-  .view-results { 
-    /* position: absolute;
-    top: 240px;
-    left: 0;
-    width: 100%; */
-  }
-
-
   #results-list-container { 
-    padding: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
   }
-
-  /* #js-map-container { 
-    position: -webkit-sticky; 
-    position: sticky;
-    top: 0;
-    align-self: flex-start;
-    margin: 0 10px 0 10px;
-    width: 300px;
-  } */
-
-  
 
 }
-
-
 
 /* 768 /////////////////////////////////////*/
 @media screen and (min-width: 768px) {
@@ -441,12 +375,19 @@ a:hover {
 
 
 }
+
 /* 1024 /////////////////////////////////////*/
 @media screen and (min-width: 1024px) {
 
-  #js-map-container { /* RD */
+  #js-map-container { 
     width: 500px;
   }
+
+  .searchbar { 
+    width: 960px;
+  }
+
 }
+
 /* 1280 /////////////////////////////////////*/
 @media screen and (min-width: 1280px) {}
