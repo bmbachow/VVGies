@@ -26,6 +26,7 @@ For Map Geolocation:
 
 ## Authors
 **Brian Bachow**
+
 **Sacha Sedriks**
 
 ## Acknowledgements
