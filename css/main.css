@@ -10,8 +10,8 @@
 }
 
 body {
-  font-family: 'Lato', sans-serif; 
-  font-weight: 400; /* weights: 300, 400, 700 */
+  font-family: 'Roboto', sans-serif; 
+  font-weight: 400; 
   font-size: 1rem;
   background-color: #FEC3A6;
   margin: 0 10px 0 10px;
@@ -49,17 +49,6 @@ main.mode-root {
   width: 400px;
 }
 
-.searchbar { /* RD, too */
-  width: 100%;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 18px
-}
-
-.area > label , .distance > label {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 28px
-}
-
 .footer {
   padding: 10px;
   margin-top: 100px;
@@ -82,7 +71,8 @@ main.mode-root {
 
 /*/ SEARCHBAR ////////////////////////////////////////*/
 
-.searchbar {
+.searchbar { /* RD, too */
+  width: 100%;
   padding: 10px;
   margin: 10px;
   margin-top: 10px;
@@ -92,8 +82,8 @@ main.mode-root {
   max-width: 1080px;
   color: black;
   border-radius: 15px;
-  font-family: 'Roboto', sans-serif;
   font-weight: bolder;
+  font-size: 18px;
 }
 
 form {
@@ -128,8 +118,9 @@ form {
 
 .area label,
 .distance label {
+  font-family: 'Open Sans', sans-serif;
   display: block;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   padding: 5px;
 }
 
@@ -212,7 +203,6 @@ button {
   display: inline-block;
   margin: 0 0 0 10px;
   font-weight: bold;
-  /* color: red; */
 }
 
 
@@ -225,10 +215,6 @@ button {
   flex-direction: row-reverse;
   justify-content: center;
 
-}
-
-.view-results , footer {
-  font-family: 'Roboto', sans-serif;
 }
 
 #results-list-container { /* RD */
@@ -276,7 +262,6 @@ ul {
   padding-right: 5px;
   margin: 0;
   color: rgb(255, 65, 51);
-  /* font-weight: 300; */
 }
 
 .food-types .user-input {
@@ -284,7 +269,6 @@ ul {
   padding-bottom: 0;
   margin: 0;
   color: rgb(255, 65, 51);
-  font-weight: 300;
 }
 
 address {
