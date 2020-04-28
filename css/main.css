@@ -30,10 +30,6 @@ main {
   justify-content: space-between;
 }
 
-main.mode-root {
-  /* unable to center elements vertically (even via the parent, body) */
-}
-
 .branding {
   padding: 10px;
   margin: 10px;
@@ -41,12 +37,7 @@ main.mode-root {
 }
 
 .branding img {
-  max-width: 550px;
-  width: 80vw;
-}
-
-.mode-root .branding img {
-  width: 400px;
+  max-width: 350px;
 }
 
 .footer {
@@ -96,7 +87,6 @@ form {
   order: 1;
   flex-grow: 5;
   max-width: 600px;
-  
 }
 
 .button {
@@ -127,7 +117,8 @@ form {
 .area-input {
   background-color: rgb(238, 238, 238);
   font-weight: normal;
-  padding: 10px;
+  padding-left: 5px; 
+  height: 45px;
   width: 100%;
 }
 
@@ -244,7 +235,6 @@ ul {
   display: inline-block;
   padding: 5px 10px;
   margin: 0 0 5px 0;
-  /* border: 2px solid rgb(0, 0, 0, 0.6);  */
   color:  rgb(0, 0, 0, 0.8);
   font-size: 0.7rem;
   font-family: 'Open Sans', sans-serif;
@@ -305,29 +295,7 @@ a:hover {
 
 
 /* REPONSIVE DESIGNS ///////////////////////*/
-/* 480 /////////////////////////////////////*/
-
-@media screen and (max-width: 680px) {
-  #js-map-container {
-    margin-top: -30px;
-  }
-}
-
-@media screen and (max-width: 590px) {
-  .branding {
-    margin-bottom: -5px;
-    padding-top: 20px;
-  }
-}
-
-@media screen and (max-width: 430px) {
-
-  .branding {
-    margin-bottom: -25px;
-        padding-top: 20px;
-  }
-
-}
+/* 680 /////////////////////////////////////*/
 
 @media screen and (min-width: 680px) {
 

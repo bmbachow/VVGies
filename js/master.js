@@ -100,7 +100,7 @@ function displayView(view) {
 }
 
 function invalidSearch() {
-  $('.area label').addClass('invalid-text').text('Area invalid. Please try again.');
+  $('.area label').addClass('invalid-text').text('Area invalid.');
   $('.area-input').addClass('invalid');
 }
 
