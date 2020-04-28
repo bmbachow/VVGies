@@ -75,7 +75,8 @@ main.mode-root {
 
 
 .branding img {
-  width: 200px;
+  max-width: 550px;
+  width: 80vw;
 }
 
 
@@ -97,7 +98,7 @@ main.mode-root {
 
 /*/ SEARCHBAR ////////////////////////////////////////*/
 
-nav {
+.searchbar {
   /* position: relative; */
   /* border: 1px solid black; */
   padding: 10px;
@@ -109,6 +110,8 @@ nav {
   max-width: 1080px;
   color: black;
   border-radius: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
 }
 
 
@@ -159,6 +162,12 @@ button {
   height: 45px;
   padding: 10px;
   /* margin-top: 20px; */
+}
+
+.filter-by-diet {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .filter-by-diet div {
@@ -228,7 +237,7 @@ a toggled state with no JavaScript! */
   /* display: inline-block; */
   margin: 0 0 0 10px;
   font-weight: bold;
-  /* color: red; */git 
+  /* color: red; */
 }
 
 /* .tab li {
@@ -246,6 +255,10 @@ a toggled state with no JavaScript! */
   /* top: 280px;
   left: 0;
   width: 100%; */
+}
+
+.view-results , footer {
+  font-family: 'Roboto', sans-serif;
 }
 
 #results-list-container { /* RD */
@@ -302,14 +315,15 @@ p {
   padding: 0;
 
 }
+
 .food-types li {
   display: inline-block;
   padding: 5px 10px;
   margin: 0 0 5px 0;
   /* border: 2px solid rgb(0, 0, 0, 0.6);  */
   color:  rgb(0, 0, 0, 0.8);
-  font-weight: bolder;
-  font-size: 0.7rem
+  font-size: 0.7rem;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .food-types .cuisine {
@@ -345,6 +359,29 @@ a:hover {
 
 /* REPONSIVE DESIGN ////////////////////////*/
 /* 480 /////////////////////////////////////*/
+
+@media screen and (max-width: 680px) {
+  #js-map-container {
+    margin-top: -30px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .branding {
+    margin-bottom: -5px;
+    padding-top: 20px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+
+  .branding {
+    margin-bottom: -25px;
+        padding-top: 20px;
+  }
+
+}
+
 @media screen and (min-width: 680px) {
 
   .mode-root .searchbar { 
