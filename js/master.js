@@ -4,10 +4,11 @@
 //////////////////////////////////////////////////////////////
 // SEPARATION OF CONCERNS: TYPES OF FUNCTIONS
 //
-// Leaflet Map API Rendering
+// Leaflet Map API Sequence
 //
-// Yelp API shizzness:
-// Miscellaneous (incl Fetch Request)
+// Yelp API Sequence:
+// Miscellaneous 
+// Fetch Requests
 // Template Generators
 // Rendering Functions
 // Event Handlers
@@ -23,7 +24,7 @@ function init() {
 
 
 //////////////////////////////////////////////////////////////
-// LEAFLET MAP API SHIZZNESS /////////////////////////////////
+// LEAFLET MAP API SEQUENCE //////////////////////////////////
 //////////////////////////////////////////////////////////////
 
 function renderMap(data, distance) {
@@ -87,7 +88,7 @@ function renderMap(data, distance) {
 
 
 //////////////////////////////////////////////////////////////
-// YELP API SHIZZNESS ////////////////////////////////////////
+// YELP API SEQUENCE /////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
 
@@ -106,6 +107,20 @@ function displayView(view) {
     $('.view-results').removeClass('hidden');
   }
 }
+
+function invalidSearch() {
+  $('.area label').addClass('invalid-text').text('Area invalid. Please try again.');
+  $('.area-input').addClass('invalid');
+}
+
+function invalidSearchReset() {
+  $('.area label').removeClass('invalid-text').text('Area');
+  $('.area-input').removeClass('invalid');
+}
+
+
+
+// FETCH REQUESTS /////////////////////////////////////////////
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params).map(key => {
@@ -159,7 +174,10 @@ function fetchRestaurantInfo(area, distance, diet, sort = 'best_match') {
       renderMap(data, distance); 
       $('.please-wait').text('');
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err);
+      invalidSearch();
+    });
   }  
 
 
@@ -170,6 +188,7 @@ function generateSearchResults(data) {
 
   const array = [];
   const arrCategories = [];
+  let price = ''; 
   
   for (let i = 0; i < data.businesses.length; i++) {
 
@@ -180,21 +199,10 @@ function generateSearchResults(data) {
     }
     let strCategories = arrCategories.join('');
 
-  //   array.push(`<li class="restaurant-item">
-  //   <h2>${data.businesses[i].name}</h2>
-  //   <address>
-  //     <p><b>Address:</b> ${data.businesses[i].location.address1}, ${data.businesses[i].location.city}, ${data.businesses[i].location.state} ${data.businesses[i].location.zip_code}<br>
-  //     <b>Phone:</b> ${data.businesses[i].display_phone}</p>
-  //   </address>
-  //   <ul class="food-types"> 
-  //     <!--<li class="cuisine">${data.businesses[i].categories[0].title}</li>-->
-  //     ${strCategories}
-  //     <li class="price">${data.businesses[i].price}</li>
-  //     <li class="diet">Rating:${data.businesses[i].rating}</li>
-  //     <li class="diet">Reviews:${data.businesses[i].review_count}</li>
-  //   </ul>
-  // </li>
-  //   `);
+    if (data.businesses[i].price !== undefined) {
+      price = `<li class="price">${data.businesses[i].price}</li>`;
+    }
+    console.log(price);
 
     array.push(`
     <ul class="food-types tab"> 
@@ -207,18 +215,18 @@ function generateSearchResults(data) {
         <b>Phone:</b> ${data.businesses[i].display_phone}</p>
       </address>
       <ul class="food-types"> 
-        <li class="price">${data.businesses[i].price}</li>
-        <li class="diet">RATING: ${data.businesses[i].rating}</li>
-        <li class="diet">REVIEWS: ${data.businesses[i].review_count}</li>
+        <!--<li class="price">${data.businesses[i].price}</li>-->
+        ${price}
+        <li class="user-input">RATING: ${data.businesses[i].rating}</li>
+        <li class="user-input">REVIEWS: ${data.businesses[i].review_count}</li>
       </ul>
     </li>
     `);
     arrCategories.length = 0;
+    price = '';
   }
   return array.join('');
 }
-
-
 
 // RENDERING FUNCTIONS ///////////////////////////////////////
 
@@ -237,6 +245,7 @@ function handleSubmission() {
     event.preventDefault();
     const sort = $('.sort-type').val();
     handleInputs(sort);
+    invalidSearchReset();
     $('.js-results-list').empty();
     $('.sortbar').addClass('hidden');
   });
@@ -246,7 +255,7 @@ function handleSort() {
   $('.sort-type').on('change', event => {
     const sort = $(event.target).val();
     handleInputs(sort);
-    $('.please-wait').text('Please wait while we re-sort the results...');
+    $('.please-wait').text('Sorting...');
   });
 }
 
