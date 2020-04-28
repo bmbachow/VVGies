@@ -10,10 +10,17 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Lato', sans-serif; 
+  font-weight: 400; /* weights: 300, 400, 700 */
   font-size: 1rem;
   background-color: #FEC3A6;
   margin: 0 10px 0 10px;
+}
+
+h2 {
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  margin: 0;
 }
 
 main {
@@ -209,7 +216,7 @@ button {
 }
 
 ul { 
-  padding: 0 10px 0 10px;
+  padding: 0 10px 0 0;
   list-style: none;
 }
 
@@ -219,22 +226,13 @@ ul {
   vertical-align: middle;
   padding: 20px;
   border-radius: 0 20px 20px 20px;
-}
-
-h2 {
-  margin: 0;
-}
-
-p {
-  margin-top: 10px;
-  margin-bottom: 40px;
-}
+}v
 
 .food-types {
   list-style: none;
   padding: 0;
-
 }
+
 .food-types li {
   display: inline-block;
   padding: 5px 10px;
@@ -252,12 +250,11 @@ p {
 }
 
 .food-types .price {
-  color: black;
   padding: 0;
   padding-right: 5px;
   margin: 0;
   color: rgb(255, 65, 51);
-
+  /* font-weight: 300; */
 }
 
 .food-types .user-input {
@@ -265,12 +262,15 @@ p {
   padding-bottom: 0;
   margin: 0;
   color: rgb(255, 65, 51);
+  font-weight: 300;
 }
 
 address {
   font-style: normal;
   font-size: 0.9rem;
-  line-height: 1.4;
+  line-height: 1.5;
+  margin-top: 25px;
+  margin-bottom: 40px;
 }
 
 a {
