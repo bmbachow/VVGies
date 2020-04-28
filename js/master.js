@@ -275,23 +275,43 @@ function handleStyledCheckboxes() {
   // by mouse/finger
   $('.filter-by-diet label').on('click', event => {
     event.stopPropagation();
-    console.log(`click: ${event.currentTarget}`);
+    $('.filter-by-diet label').removeClass('js-a11y-tab-on');
+    // console.log(`click: ${event.currentTarget}`);
     $(event.target).toggleClass('js-checked');
   });
-  // a11y by [spacebar]
-  $('.filter-by-diet input').on('keypress', event => {
-    event.stopPropagation();
-    console.log(`keypress: ${event.currentTarget}`);
+
+  // a11y for [spacebar]
+  $('.filter-by-diet input').on('keydown', event => {
     if (event.which == 32){ // spacebar
       $(event.target).siblings().toggleClass('js-checked');
-      console.log(`key: ${event.which}`);
+      // console.log(`key: ${event.which}`);
     }
-    if (event.keyCode == 9){ // tab
-      $(event.target).siblings().toggleClass('js-a11y-label');
-      console.log(`key: ${event.which}`);
-    }
+  }); 
+
+  // a11y for [tab] element:focus 
+  // sceanario
+  $('.searchbar').on('keydown', event => {
+    $('.filter-by-diet input').on('focus', event => {
+      // reset
+      $('.filter-by-diet label').removeClass('js-a11y-tab-on');
+      // reactivate
+      $(event.target).closest('div').find('.for-a11y').toggleClass('js-a11y-tab-on');
+    });
   });
+  // a11y for [tab] !element:focus 
+  // sceanarios
+  $('button[type=submit]').on('focus', event => {
+    $('.filter-by-diet label').removeClass('js-a11y-tab-on');
+  });
+  $('.distance-input').on('focus', event => {
+    $('.filter-by-diet label').removeClass('js-a11y-tab-on');
+  }); 
+  $('.area-input').on('click', event => {
+    $('.filter-by-diet label').removeClass('js-a11y-tab-on');
+  });
+
 }
+
 
 
 // INVOKE INIT

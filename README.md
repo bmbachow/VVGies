@@ -25,8 +25,9 @@ For Map Geolocation:
 [Mapbox Static Tiles API](https://docs.mapbox.com/api/)
 
 ## Authors
-* **Brian Bachow**
-* **Sacha Sedriks**
+**Brian Bachow**
+**Sacha Sedriks**
 
 ## Acknowledgements
 **James Schultz** for CORS proxy solution (and moral support).
+
