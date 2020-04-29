@@ -33,11 +33,10 @@ main {
 .branding {
   padding: 10px;
   margin: 10px;
-  height: 100px;
 }
 
 .branding img {
-  max-width: 350px;
+  width: 100%;
 }
 
 .footer {
