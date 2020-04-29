@@ -79,30 +79,29 @@ main {
 form {
   display: flex;
   flex-flow: wrap;
-  max-width: 600px;
+  max-width: 650px;
 }
 
-.area {
+.area { /* RD, too */
   order: 1;
-  flex-grow: 5;
-  max-width: 600px;
+  width: 67%;
 }
 
-.button {
+.button { /* RD, too */
   order: 2;
   align-self: flex-end;
-  margin: 0 40px 0 5px;
+  margin: 0 0 0 5px;
 }
 
-.distance {
+.distance { /* RD, too */
   order: 3;
-  flex-grow: 0;
+  margin-top: 10px;
+  margin-right: 100px; /* to force .filter-by-diet to wrap */
 }
 
 .filter-by-diet {
   order: 4;
   margin-top: 16px;
-  flex-grow: 0;
 }
 
 .area label,
@@ -294,18 +293,35 @@ a:hover {
 
 
 /* REPONSIVE DESIGNS ///////////////////////*/
-/* 680 /////////////////////////////////////*/
 
+/* 500 /////////////////////////////////////*/
+@media screen and (min-width: 500px) {
+
+  .area {
+    width: 50%;
+  }
+
+  .button { 
+    margin: 0 40px 0 5px;
+  }
+
+  .distance { 
+    order: 3;
+    margin: 0;
+  }
+
+}
+
+/* 680 /////////////////////////////////////*/
 @media screen and (min-width: 680px) {
 
   .mode-root .searchbar { 
     width: 500px;
   }
 
-  .sortbar { 
-    top: 140px;
-    left: 0;
-  }
+  /* .button { 
+    margin: 0 40px 0 5px;
+  } */
 
   #results-list-container { 
     padding-right: 30px;
