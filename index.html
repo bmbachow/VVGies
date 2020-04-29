@@ -39,12 +39,12 @@
       <form class="search-form"> 
         <div class="area">
           <label for="area">Area</label>
-          <input type="text" class="area-input" name="area" placeholder="Enter city or zipcode..." required>
+          <input type="text" id="area" class="area-input" name="area" placeholder="Enter city or zipcode..." required>
         </div>
 
         <div class="distance">
           <label for="distance">Distance</label>
-          <select name="distance" class="distance-input">
+          <select id="distance" name="distance" class="distance-input">
               <option value="2">2 miles</option>
               <option value="5">5 miles</option>
               <option value="10">10 miles</option>
@@ -73,7 +73,7 @@
 
       <div class="sortbar hidden">
         <label for="sort-type">Sorted by: </label>
-        <select name="sort-type" class="sort-type">
+        <select id="sort-type" name="sort-type" class="sort-type">
           <option value="best_match" selected>Best Match</option>
           <option value="rating">Overall Rating</option>
           <option value="review_count">Review Count</option>
