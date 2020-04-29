@@ -17,7 +17,7 @@
  
   -->
 
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Roboto&display=swap&family=Lora:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Roboto&display=swap&family=Lora:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
 
@@ -32,19 +32,25 @@
   
   <main class="mode-root">
 
-    <header class="branding"><img src="img/vvgies.svg" alt="VVGies logo"></header>
+    <header class="branding">
+      <img src="img/vvgies.svg" alt="VVGies logo">
+      <h1 class="hidden">VVGies Restaurant Search Engine</h1>
+      <h2 class="description">Our search engine helps you find restaurants in an area that cater to your vegetarian, vegan, and gluten-free dietary needs.</h2>
+    </header>
+
+    
     
     <section class="searchbar">
         
       <form class="search-form"> 
         <div class="area">
           <label for="area">Area</label>
-          <input type="text" class="area-input" name="area" placeholder="Enter city or zipcode..." required>
+          <input type="text" id="area" class="area-input" name="area" placeholder="Enter city or zipcode..." required>
         </div>
 
         <div class="distance">
           <label for="distance">Distance</label>
-          <select name="distance" class="distance-input">
+          <select id="distance" name="distance" class="distance-input">
               <option value="2">2 miles</option>
               <option value="5">5 miles</option>
               <option value="10">10 miles</option>
@@ -73,7 +79,7 @@
 
       <div class="sortbar hidden">
         <label for="sort-type">Sorted by: </label>
-        <select name="sort-type" class="sort-type">
+        <select id="sort-type" name="sort-type" class="sort-type">
           <option value="best_match" selected>Best Match</option>
           <option value="rating">Overall Rating</option>
           <option value="review_count">Review Count</option>
@@ -83,6 +89,8 @@
       </div>
       
     </section>
+
+    
 
     <section class="view-results hidden">
       <div id="js-map-container">

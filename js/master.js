@@ -31,7 +31,7 @@ function renderMap(data, distance) {
   // To avoid "Error: Map Container Is Already Initialized"
   // destroy map, only to then recreate it ;P
   $('#js-map-container').empty();
-  $('#js-map-container').html('<div id="mapid""></div>');
+  $('#js-map-container').html('<div id="mapid"></div>');
 
   const coordinates = [];
   
@@ -194,9 +194,9 @@ function generateSearchResults(data) {
     }
 
     array.push(`
-    <ul class="food-types tab"> 
+    <li><ul class="food-types tab"> 
       ${strCategories}
-    </ul>
+    </ul></li>
     <li class="restaurant-item">
       <h2>${data.businesses[i].name}</h2>
       <address>
@@ -224,6 +224,13 @@ function renderSearchResults(data) {
   displayView('results');
 }
 
+function renderSemanticHeader(area) {
+  $('.branding').find('h1').remove();
+  $('.branding').find('h2').remove();
+  $('.branding').append(`
+    <h1 class="hidden">Search Results for ${area}</h1>
+  `);
+}
 
 
 // EVENT HANDLERS ////////////////////////////////////////////
@@ -265,6 +272,7 @@ function handleInputs(sort) {
     $('.view-results').find('#vegetarian-check').attr('checked', true);
   } 
   fetchRestaurantInfo(area, distance, diet, sort);
+  renderSemanticHeader(area);
 }
 
 function handleStyledCheckboxes() {
