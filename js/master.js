@@ -226,6 +226,7 @@ function renderSearchResults(data) {
 
 function renderSemanticHeader(area) {
   $('.branding').find('h1').remove();
+  $('.branding').find('h2').remove();
   $('.branding').append(`
     <h1 class="hidden">Search Results for ${area}</h1>
   `);

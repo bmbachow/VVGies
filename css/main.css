@@ -20,7 +20,13 @@ body {
 h2 {
   font-family: 'Lora', serif;
   font-weight: 700;
-  margin: 0;
+  margin: 20px 0 0 0;
+}
+
+h2.description {
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.4;
 }
 
 main {
@@ -33,6 +39,7 @@ main {
 .branding {
   padding: 10px;
   margin: 10px;
+  max-width: 500px;
 }
 
 .branding img {
