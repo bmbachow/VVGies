@@ -4,7 +4,7 @@
 People who maintain vegetarian, vegan or gluten-free diets often have difficulty finding restaurants that cater to their needs. This app enables users to search for restaurants that satisfy those particular dietary needs.
 
 ## Demo
-https://artificialarea.github.io/VVGies/
+https://bmbachow.github.io/VVGies/
 
 
 ## Screenshots
